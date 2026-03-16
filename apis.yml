@@ -1,0 +1,40 @@
+aid: bettercloud
+name: BetterCloud
+description: >-
+  BetterCloud is a SaaS operations management platform that provides automated
+  workflows, security policies, and management capabilities for SaaS
+  applications in enterprise environments.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - SaaS Management
+  - Security
+  - Automation
+  - Enterprise
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: bettercloud:bettercloud-api
+    name: BetterCloud API
+    description: >-
+      BetterCloud API for managing SaaS application operations, automated
+      workflows, and security policies.
+    humanURL: https://developer.bettercloud.com/
+    tags:
+      - SaaS Management
+      - Automation
+      - Security
+    properties:
+      - type: Documentation
+        url: https://developer.bettercloud.com/
+common:
+  - type: Website
+    url: https://www.bettercloud.com/
+  - type: Documentation
+    url: https://developer.bettercloud.com/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
