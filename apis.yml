@@ -1,9 +1,11 @@
 aid: bettercloud
 name: BetterCloud
 description: >-
-  BetterCloud is a SaaS operations management platform that provides automated
-  workflows, security policies, and management capabilities for SaaS
-  applications in enterprise environments.
+  BetterCloud is the end-to-end SaaS management platform that enables IT teams
+  to discover, manage, and secure the growing SaaS environment. The platform
+  provides automated workflows, security policies, and management capabilities
+  for SaaS applications in enterprise environments, handling billions of API
+  calls per day across 100+ SaaS application integrations.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -11,30 +13,60 @@ tags:
   - Security
   - Automation
   - Enterprise
+  - IT Operations
+  - Workflows
+  - Compliance
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-03-16'
+modified: '2026-03-27'
 specificationVersion: '0.19'
 apis:
-  - aid: bettercloud:bettercloud-api
-    name: BetterCloud API
+  - aid: bettercloud:bettercloud-platform-api
+    name: BetterCloud Platform API
     description: >-
-      BetterCloud API for managing SaaS application operations, automated
-      workflows, and security policies.
+      The BetterCloud Platform API provides REST API access for managing SaaS
+      application operations, automated workflows, and security policies. It
+      enables IT and security teams to programmatically automate management
+      workflows and enforce security policies across cloud technology stacks
+      using standard HTTP methods.
     humanURL: https://developer.bettercloud.com/
     tags:
       - SaaS Management
       - Automation
       - Security
+      - REST API
+      - Workflows
     properties:
       - type: Documentation
         url: https://developer.bettercloud.com/
+      - type: GettingStarted
+        url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
+      - type: PostmanCollection
+        url: https://www.postman.com/cs-demo/bettercloud-api/documentation/w8a0qnf/bettercloud-developer-portal
 common:
   - type: Website
     url: https://www.bettercloud.com/
   - type: Documentation
     url: https://developer.bettercloud.com/
+  - type: ProductDocumentation
+    url: https://www.bettercloud.com/product-documentation/
+  - type: Pricing
+    url: https://www.bettercloud.com/pricing/
+  - type: Blog
+    url: https://www.bettercloud.com/monitor/
+  - type: Support
+    url: https://support.bettercloud.com/s/
+  - type: Login
+    url: https://support.bettercloud.com/s/login/
+  - type: SignUp
+    url: https://www.bettercloud.com/monitor/sign-up/
+  - type: GitHub
+    url: https://github.com/BetterCloud
+  - type: GitHubPages
+    url: https://bettercloud.github.io/
+  - type: Newsletter
+    url: https://www.bettercloud.com/subscribe/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
