@@ -9,13 +9,13 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - SaaS Management
-  - Security
   - Automation
+  - Compliance
   - Enterprise
   - IT Operations
+  - SaaS Management
+  - Security
   - Workflows
-  - Compliance
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -32,10 +32,10 @@ apis:
       using standard HTTP methods.
     humanURL: https://developer.bettercloud.com/
     tags:
-      - SaaS Management
       - Automation
-      - Security
       - REST API
+      - SaaS Management
+      - Security
       - Workflows
     properties:
       - type: Documentation
