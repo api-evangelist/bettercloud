@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-structure/bettercloud-group-structure.json",
+  "name": "Group",
+  "description": "A group from an integrated directory service.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the group.",
+      "example": "group-x1y2z3"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the group.",
+      "example": "Engineering Team"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "nullable": true,
+      "description": "Email address of the group.",
+      "example": "engineering@example.com"
+    },
+    "description": {
+      "type": "string",
+      "nullable": true,
+      "description": "Description of the group.",
+      "example": "Engineering department group"
+    },
+    "member_count": {
+      "type": "int32",
+      "description": "Number of members in the group.",
+      "example": 45
+    },
+    "created_at": {
+      "type": "datetime",
+      "description": "When the group was created.",
+      "example": "2024-06-01T00:00:00Z"
+    },
+    "updated_at": {
+      "type": "datetime",
+      "nullable": true,
+      "description": "When the group was last updated.",
+      "example": "2026-03-01T00:00:00Z"
+    }
+  }
+}

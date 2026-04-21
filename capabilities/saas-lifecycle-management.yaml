@@ -1,0 +1,265 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: BetterCloud SaaS Lifecycle Management
+  description: >-
+    Unified SaaS user lifecycle management workflow combining user management,
+    group management, workflow automation, and audit logging. Used by IT
+    administrators and security teams to manage employee access throughout
+    the full SaaS application lifecycle from onboarding to offboarding.
+  tags:
+    - BetterCloud
+    - Saas Management
+    - User Lifecycle
+    - Onboarding
+    - Offboarding
+    - Compliance
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      BETTERCLOUD_API_KEY: BETTERCLOUD_API_KEY
+
+capability:
+  consumes:
+    - import: bettercloud
+      location: ./shared/bettercloud.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: bettercloud-lifecycle-api
+      description: Unified REST API for BetterCloud SaaS lifecycle management.
+      resources:
+        - path: /v1/users
+          name: users
+          description: User discovery and management
+          operations:
+            - method: GET
+              name: list-users
+              description: List all users
+              call: "bettercloud.list-users"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/users/{id}
+          name: user
+          description: Individual user operations
+          operations:
+            - method: GET
+              name: get-user
+              description: Get user details
+              call: "bettercloud.get-user"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PATCH
+              name: update-user
+              description: Update user attributes
+              call: "bettercloud.update-user"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/users/{id}/suspend
+          name: user-suspend
+          description: Suspend user
+          operations:
+            - method: POST
+              name: suspend-user
+              description: Suspend a user
+              call: "bettercloud.suspend-user"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/users/{id}/deprovision
+          name: user-deprovision
+          description: Deprovision user
+          operations:
+            - method: POST
+              name: deprovision-user
+              description: Deprovision a user
+              call: "bettercloud.deprovision-user"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/groups
+          name: groups
+          description: Group management
+          operations:
+            - method: GET
+              name: list-groups
+              description: List all groups
+              call: "bettercloud.list-groups"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-group
+              description: Create a group
+              call: "bettercloud.create-group"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/workflows
+          name: workflows
+          description: Automation workflow management
+          operations:
+            - method: GET
+              name: list-workflows
+              description: List all workflows
+              call: "bettercloud.list-workflows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/workflows/{id}/run
+          name: workflow-run
+          description: Trigger workflow execution
+          operations:
+            - method: POST
+              name: run-workflow
+              description: Run a workflow
+              call: "bettercloud.run-workflow"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/events
+          name: events
+          description: Audit event log
+          operations:
+            - method: GET
+              name: list-events
+              description: List audit events
+              call: "bettercloud.list-events"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: bettercloud-lifecycle-mcp
+      transport: http
+      description: MCP server for AI-assisted BetterCloud SaaS lifecycle management.
+      tools:
+        - name: list-users
+          description: List users across all connected SaaS applications
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "bettercloud.list-users"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-user
+          description: Get full details for a specific user including SaaS access
+          hints:
+            readOnly: true
+          call: "bettercloud.get-user"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-user
+          description: Update user attributes like department or title
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "bettercloud.update-user"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: suspend-user
+          description: Suspend a departing or at-risk user across all SaaS apps
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "bettercloud.suspend-user"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: deprovision-user
+          description: Fully deprovision a user removing all SaaS application access
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "bettercloud.deprovision-user"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-groups
+          description: List all groups from connected directory services
+          hints:
+            readOnly: true
+          call: "bettercloud.list-groups"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: add-group-member
+          description: Add a user to a group
+          hints:
+            readOnly: false
+            destructive: false
+          call: "bettercloud.add-group-member"
+          with:
+            id: "tools.group_id"
+            user_id: "tools.user_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-workflows
+          description: List all automation workflows
+          hints:
+            readOnly: true
+          call: "bettercloud.list-workflows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-workflow
+          description: Trigger a workflow for a set of users (e.g., offboarding)
+          hints:
+            readOnly: false
+            destructive: false
+          call: "bettercloud.run-workflow"
+          with:
+            id: "tools.workflow_id"
+            user_ids: "tools.user_ids"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-events
+          description: List audit events for compliance investigation
+          hints:
+            readOnly: true
+          call: "bettercloud.list-events"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-integrations
+          description: List all connected SaaS application integrations
+          hints:
+            readOnly: true
+          call: "bettercloud.list-integrations"
+          outputParameters:
+            - type: object
+              mapping: "$."

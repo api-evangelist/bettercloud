@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-schema/bettercloud-workflow-create-request-schema.json",
+  "title": "WorkflowCreateRequest",
+  "description": "Request body for creating a workflow.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the workflow.",
+      "example": "New Employee Onboarding"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the workflow.",
+      "example": "Automated onboarding workflow for new hires"
+    },
+    "trigger_type": {
+      "type": "string",
+      "description": "Trigger type for the workflow.",
+      "enum": [
+        "manual",
+        "event",
+        "scheduled"
+      ],
+      "example": "event"
+    },
+    "status": {
+      "type": "string",
+      "description": "Initial status.",
+      "enum": [
+        "active",
+        "draft"
+      ],
+      "example": "draft"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

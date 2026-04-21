@@ -1,0 +1,9 @@
+{
+  "id": "group-x1y2z3",
+  "name": "Engineering Team",
+  "email": "engineering@example.com",
+  "description": "Engineering department group",
+  "member_count": 45,
+  "created_at": "2024-06-01T00:00:00Z",
+  "updated_at": "2026-03-01T00:00:00Z"
+}

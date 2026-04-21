@@ -1,0 +1,210 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: BetterCloud
+  description: >-
+    Unified taxonomy mapping operational and capability dimensions of the
+    BetterCloud SaaS management platform.
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: bettercloud-platform-v1
+      version: v1
+      baseUrl: https://api.bettercloud.com/v1
+      status: active
+      description: BetterCloud Platform API for SaaS management
+
+  resources:
+    - name: users
+      api: bettercloud-platform-v1
+      actions: [list, get, update, suspend, deprovision]
+      description: Users discovered and managed across SaaS applications
+    - name: groups
+      api: bettercloud-platform-v1
+      actions: [list, create, get, delete, list-members, add-member]
+      description: Groups from connected directory services
+    - name: workflows
+      api: bettercloud-platform-v1
+      actions: [list, create, get, delete, run]
+      description: Automation workflows for SaaS operations
+    - name: events
+      api: bettercloud-platform-v1
+      actions: [list]
+      description: Audit events for compliance and investigation
+    - name: integrations
+      api: bettercloud-platform-v1
+      actions: [list]
+      description: Connected SaaS application integrations
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: Retrieve paginated collection
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: Retrieve single resource
+    - name: create
+      httpMethod: POST
+      pattern: write
+      description: Create new resource
+    - name: update
+      httpMethod: PATCH
+      pattern: write
+      description: Update resource attributes
+    - name: delete
+      httpMethod: DELETE
+      pattern: destructive
+      description: Permanently remove resource
+    - name: suspend
+      httpMethod: POST
+      pattern: write
+      description: Suspend user access
+    - name: deprovision
+      httpMethod: POST
+      pattern: destructive
+      description: Remove all user SaaS access
+    - name: run
+      httpMethod: POST
+      pattern: write
+      description: Trigger workflow execution
+
+  schemas:
+    core:
+      - name: User
+        description: User managed across SaaS applications
+        keyProperties: [id, email, first_name, last_name, status, department, title]
+      - name: Group
+        description: Group from directory service
+        keyProperties: [id, name, email, member_count]
+      - name: Workflow
+        description: Automation workflow
+        keyProperties: [id, name, status, trigger_type, action_count]
+      - name: Event
+        description: Audit event
+        keyProperties: [id, type, actor_email, target_email, occurred_at]
+      - name: Integration
+        description: SaaS application integration
+        keyProperties: [id, name, type, status]
+
+  parameters:
+    pagination:
+      - name: page
+        type: integer
+      - name: per_page
+        type: integer
+    filters:
+      - name: status
+        type: string
+      - name: email
+        type: string
+      - name: from
+        type: string
+        format: date-time
+      - name: to
+        type: string
+        format: date-time
+      - name: type
+        type: string
+    identifiers:
+      - name: id
+        type: string
+
+  enums:
+    user_status:
+      - active
+      - suspended
+      - deprovisioned
+    workflow_status:
+      - active
+      - inactive
+      - draft
+    trigger_type:
+      - manual
+      - event
+      - scheduled
+    integration_status:
+      - connected
+      - disconnected
+      - error
+    group_member_role:
+      - owner
+      - manager
+      - member
+
+  authentication:
+    schemes:
+      - type: apiKey
+        in: header
+        name: X-API-Key
+        description: BetterCloud API key in X-API-Key header
+
+capability:
+  workflows:
+    - name: SaaS Lifecycle Management
+      file: capabilities/saas-lifecycle-management.yaml
+      description: User onboarding and offboarding across SaaS applications
+      apisConsumed: [bettercloud]
+      toolCount: 11
+      personas: [it-administrator, security-engineer]
+
+  personas:
+    - id: it-administrator
+      name: IT Administrator
+      description: IT admin managing SaaS access and user lifecycle
+      workflows: [SaaS Lifecycle Management]
+    - id: security-engineer
+      name: Security Engineer
+      description: Security team member managing compliance and access policies
+      workflows: [SaaS Lifecycle Management]
+
+  domains:
+    - name: User Lifecycle
+      description: Onboarding, management, and offboarding of users across SaaS
+      resources: [users, groups]
+    - name: Automation
+      description: Workflow automation for IT operations
+      resources: [workflows]
+    - name: Compliance
+      description: Audit trails and policy enforcement
+      resources: [events]
+    - name: Integrations
+      description: SaaS application connectivity
+      resources: [integrations]
+
+  namespaces:
+    - type: consumed
+      name: bettercloud
+      baseUri: https://api.bettercloud.com/v1
+    - type: rest
+      name: bettercloud-lifecycle-api
+      port: 8080
+    - type: mcp
+      name: bettercloud-lifecycle-mcp
+      port: 9080
+
+  binds:
+    - name: BETTERCLOUD_API_KEY
+      description: BetterCloud API key
+      workflows: [SaaS Lifecycle Management]
+
+crossReference:
+  - resource: users
+    operations: [listUsers, getUser, updateUser, suspendUser, deprovisionUser]
+    workflows: [SaaS Lifecycle Management]
+    personas: [it-administrator, security-engineer]
+  - resource: groups
+    operations: [listGroups, createGroup, getGroup, deleteGroup, listGroupMembers, addGroupMember]
+    workflows: [SaaS Lifecycle Management]
+    personas: [it-administrator]
+  - resource: workflows
+    operations: [listWorkflows, createWorkflow, getWorkflow, deleteWorkflow, runWorkflow]
+    workflows: [SaaS Lifecycle Management]
+    personas: [it-administrator]
+  - resource: events
+    operations: [listEvents]
+    workflows: [SaaS Lifecycle Management]
+    personas: [it-administrator, security-engineer]

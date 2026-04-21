@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-structure/bettercloud-group-member-response-structure.json",
+  "name": "GroupMemberResponse",
+  "description": "Single group member response.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "#/components/schemas/GroupMember"
+    }
+  }
+}

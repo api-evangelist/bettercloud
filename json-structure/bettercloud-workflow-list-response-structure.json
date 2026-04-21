@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-structure/bettercloud-workflow-list-response-structure.json",
+  "name": "WorkflowListResponse",
+  "description": "Paginated list of workflows.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Workflow"
+      }
+    },
+    "meta": {
+      "$ref": "#/components/schemas/MetaResponse"
+    }
+  }
+}

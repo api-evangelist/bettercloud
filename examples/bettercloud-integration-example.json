@@ -1,0 +1,7 @@
+{
+  "id": "int-g001",
+  "name": "Google Workspace",
+  "type": "google_workspace",
+  "status": "connected",
+  "connected_at": "2025-01-10T00:00:00Z"
+}

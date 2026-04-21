@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-schema/bettercloud-user-response-schema.json",
+  "title": "UserResponse",
+  "description": "Single user response.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "#/components/schemas/User"
+    }
+  }
+}

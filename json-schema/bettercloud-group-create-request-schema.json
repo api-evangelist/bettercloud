@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-schema/bettercloud-group-create-request-schema.json",
+  "title": "GroupCreateRequest",
+  "description": "Request body for creating a group.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the group.",
+      "example": "New Team"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the group.",
+      "example": "newteam@example.com"
+    },
+    "description": {
+      "type": "string",
+      "description": "Group description.",
+      "example": "New team group"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

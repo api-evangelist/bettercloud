@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-schema/bettercloud-group-list-response-schema.json",
+  "title": "GroupListResponse",
+  "description": "Paginated list of groups.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Group"
+      }
+    },
+    "meta": {
+      "$ref": "#/components/schemas/MetaResponse"
+    }
+  }
+}

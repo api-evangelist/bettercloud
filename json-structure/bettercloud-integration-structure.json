@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-structure/bettercloud-integration-structure.json",
+  "name": "Integration",
+  "description": "A connected SaaS application integration in BetterCloud.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the integration.",
+      "example": "int-g001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the integration.",
+      "example": "Google Workspace"
+    },
+    "type": {
+      "type": "string",
+      "description": "Integration type identifier.",
+      "example": "google_workspace"
+    },
+    "status": {
+      "type": "string",
+      "description": "Connection status.",
+      "enum": [
+        "connected",
+        "disconnected",
+        "error"
+      ],
+      "example": "connected"
+    },
+    "connected_at": {
+      "type": "datetime",
+      "nullable": true,
+      "description": "When the integration was connected.",
+      "example": "2025-01-10T00:00:00Z"
+    }
+  }
+}

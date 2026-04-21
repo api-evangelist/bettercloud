@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-schema/bettercloud-workflow-run-response-schema.json",
+  "title": "WorkflowRunResponse",
+  "description": "Response from triggering a workflow execution.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "execution_id": {
+          "type": "string",
+          "description": "Unique ID of this workflow execution.",
+          "example": "exec-900100"
+        },
+        "workflow_id": {
+          "type": "string",
+          "description": "ID of the workflow being executed.",
+          "example": "wf-100200"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current execution status.",
+          "enum": [
+            "pending",
+            "running",
+            "completed",
+            "failed"
+          ],
+          "example": "running"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the execution started.",
+          "example": "2026-04-19T10:00:00Z"
+        }
+      }
+    }
+  }
+}

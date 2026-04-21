@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-schema/bettercloud-event-schema.json",
+  "title": "Event",
+  "description": "An audit event recording activity in BetterCloud or connected SaaS applications.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the event.",
+      "example": "evt-500100"
+    },
+    "type": {
+      "type": "string",
+      "description": "Event type in dot-notation (e.g., user.suspended, group.created).",
+      "example": "user.suspended"
+    },
+    "actor_email": {
+      "type": "string",
+      "format": "email",
+      "nullable": true,
+      "description": "Email of the user or system that triggered the event.",
+      "example": "admin@example.com"
+    },
+    "target_email": {
+      "type": "string",
+      "format": "email",
+      "nullable": true,
+      "description": "Email of the user or resource affected by the event.",
+      "example": "jsmith@example.com"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of what happened.",
+      "example": "User suspended via BetterCloud workflow"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the event occurred.",
+      "example": "2026-04-18T14:00:00Z"
+    }
+  }
+}

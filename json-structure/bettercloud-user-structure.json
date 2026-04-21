@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-structure/bettercloud-user-structure.json",
+  "name": "User",
+  "description": "A user discovered and managed across BetterCloud integrations.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the user in BetterCloud.",
+      "example": "user-a1b2c3d4"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Primary email address of the user.",
+      "example": "jsmith@example.com"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "User's first name.",
+      "example": "Jane"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "User's last name.",
+      "example": "Smith"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the user.",
+      "enum": [
+        "active",
+        "suspended",
+        "deprovisioned"
+      ],
+      "example": "active"
+    },
+    "department": {
+      "type": "string",
+      "nullable": true,
+      "description": "Department or organizational unit.",
+      "example": "Engineering"
+    },
+    "title": {
+      "type": "string",
+      "nullable": true,
+      "description": "Job title.",
+      "example": "Senior Engineer"
+    },
+    "manager_email": {
+      "type": "string",
+      "format": "email",
+      "nullable": true,
+      "description": "Email of the user's manager.",
+      "example": "manager@example.com"
+    },
+    "location": {
+      "type": "string",
+      "nullable": true,
+      "description": "Office location.",
+      "example": "San Francisco"
+    },
+    "created_at": {
+      "type": "datetime",
+      "description": "When the user was first discovered.",
+      "example": "2025-01-15T10:00:00Z"
+    },
+    "updated_at": {
+      "type": "datetime",
+      "description": "When the user record was last updated.",
+      "example": "2026-04-01T08:30:00Z"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-structure/bettercloud-group-member-structure.json",
+  "name": "GroupMember",
+  "description": "A member of a group.",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Unique identifier of the user.",
+      "example": "user-a1b2c3d4"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email of the group member.",
+      "example": "jsmith@example.com"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the member.",
+      "example": "Jane Smith"
+    },
+    "role": {
+      "type": "string",
+      "description": "Role in the group.",
+      "enum": [
+        "owner",
+        "manager",
+        "member"
+      ],
+      "example": "member"
+    }
+  }
+}

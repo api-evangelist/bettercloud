@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-schema/bettercloud-workflow-run-request-schema.json",
+  "title": "WorkflowRunRequest",
+  "description": "Request body for triggering a workflow execution.",
+  "type": "object",
+  "properties": {
+    "user_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of user IDs to run the workflow for.",
+      "example": [
+        "user-a1b2c3d4"
+      ]
+    }
+  },
+  "required": [
+    "user_ids"
+  ]
+}

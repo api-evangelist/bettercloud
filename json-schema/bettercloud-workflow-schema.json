@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-schema/bettercloud-workflow-schema.json",
+  "title": "Workflow",
+  "description": "An automation workflow that can be triggered to execute actions across SaaS applications.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the workflow.",
+      "example": "wf-100200"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the workflow.",
+      "example": "Employee Offboarding"
+    },
+    "description": {
+      "type": "string",
+      "nullable": true,
+      "description": "Description of what the workflow does.",
+      "example": "Automated offboarding workflow for departing employees"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the workflow.",
+      "enum": [
+        "active",
+        "inactive",
+        "draft"
+      ],
+      "example": "active"
+    },
+    "trigger_type": {
+      "type": "string",
+      "description": "How the workflow is triggered.",
+      "enum": [
+        "manual",
+        "event",
+        "scheduled"
+      ],
+      "example": "manual"
+    },
+    "action_count": {
+      "type": "integer",
+      "description": "Number of actions in the workflow.",
+      "example": 12
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the workflow was created.",
+      "example": "2025-03-01T00:00:00Z"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true,
+      "description": "When the workflow was last updated.",
+      "example": "2026-04-01T00:00:00Z"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bc": "https://bettercloud.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "EventListResponse": "bc:EventListResponse",
+    "Event": "bc:Event",
+    "GroupCreateRequest": "bc:GroupCreateRequest",
+    "GroupListResponse": "bc:GroupListResponse",
+    "GroupMemberAddRequest": "bc:GroupMemberAddRequest",
+    "GroupMemberListResponse": "bc:GroupMemberListResponse",
+    "GroupMemberResponse": "bc:GroupMemberResponse",
+    "GroupMember": "bc:GroupMember",
+    "GroupResponse": "bc:GroupResponse",
+    "Group": "bc:Group",
+    "IntegrationListResponse": "bc:IntegrationListResponse",
+    "Integration": "bc:Integration",
+    "MetaResponse": "bc:MetaResponse",
+    "UserListResponse": "bc:UserListResponse",
+    "UserResponse": "bc:UserResponse",
+    "User": "bc:User",
+    "UserUpdateRequest": "bc:UserUpdateRequest",
+    "WorkflowCreateRequest": "bc:WorkflowCreateRequest",
+    "WorkflowListResponse": "bc:WorkflowListResponse",
+    "WorkflowResponse": "bc:WorkflowResponse",
+    "WorkflowRunRequest": "bc:WorkflowRunRequest",
+    "WorkflowRunResponse": "bc:WorkflowRunResponse",
+    "Workflow": "bc:Workflow",
+    "data": {
+      "@id": "bc:data",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "meta": {
+      "@id": "bc:meta",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "bc:id",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "bc:type",
+      "@type": "xsd:string"
+    },
+    "actorEmail": {
+      "@id": "bc:actor_email",
+      "@type": "xsd:string"
+    },
+    "targetEmail": {
+      "@id": "bc:target_email",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "occurredAt": {
+      "@id": "bc:occurred_at",
+      "@type": "xsd:dateTime"
+    },
+    "name": "schema:name",
+    "email": "schema:email",
+    "userId": {
+      "@id": "bc:user_id",
+      "@type": "xsd:string"
+    },
+    "role": {
+      "@id": "bc:role",
+      "@type": "xsd:string"
+    },
+    "memberCount": {
+      "@id": "bc:member_count",
+      "@type": "xsd:integer"
+    },
+    "createdAt": "schema:dateCreated",
+    "updatedAt": "schema:dateModified",
+    "status": {
+      "@id": "bc:status",
+      "@type": "xsd:string"
+    },
+    "connectedAt": {
+      "@id": "bc:connected_at",
+      "@type": "xsd:dateTime"
+    },
+    "page": {
+      "@id": "bc:page",
+      "@type": "xsd:integer"
+    },
+    "perPage": {
+      "@id": "bc:per_page",
+      "@type": "xsd:integer"
+    },
+    "total": {
+      "@id": "bc:total",
+      "@type": "xsd:integer"
+    },
+    "firstName": {
+      "@id": "bc:first_name",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "bc:last_name",
+      "@type": "xsd:string"
+    },
+    "department": {
+      "@id": "bc:department",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "bc:title",
+      "@type": "xsd:string"
+    },
+    "managerEmail": {
+      "@id": "bc:manager_email",
+      "@type": "xsd:string"
+    },
+    "location": {
+      "@id": "bc:location",
+      "@type": "xsd:string"
+    },
+    "triggerType": {
+      "@id": "bc:trigger_type",
+      "@type": "xsd:string"
+    },
+    "userIds": {
+      "@id": "bc:user_ids",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "actionCount": {
+      "@id": "bc:action_count",
+      "@type": "xsd:integer"
+    }
+  }
+}

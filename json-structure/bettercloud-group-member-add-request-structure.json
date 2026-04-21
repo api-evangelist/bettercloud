@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-structure/bettercloud-group-member-add-request-structure.json",
+  "name": "GroupMemberAddRequest",
+  "description": "Request body for adding a member to a group.",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "ID of the user to add to the group.",
+      "example": "user-a1b2c3d4"
+    },
+    "role": {
+      "type": "string",
+      "description": "Role to assign in the group.",
+      "enum": [
+        "owner",
+        "manager",
+        "member"
+      ],
+      "example": "member"
+    }
+  },
+  "required": [
+    "user_id"
+  ]
+}

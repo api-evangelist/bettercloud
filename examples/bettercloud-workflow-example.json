@@ -1,0 +1,10 @@
+{
+  "id": "wf-100200",
+  "name": "Employee Offboarding",
+  "description": "Automated offboarding workflow for departing employees",
+  "status": "active",
+  "trigger_type": "manual",
+  "action_count": 12,
+  "created_at": "2025-03-01T00:00:00Z",
+  "updated_at": "2026-04-01T00:00:00Z"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "New Employee Onboarding",
+  "description": "Automated onboarding workflow for new hires",
+  "trigger_type": "event",
+  "status": "draft"
+}

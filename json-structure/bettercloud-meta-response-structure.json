@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/json-structure/bettercloud-meta-response-structure.json",
+  "name": "MetaResponse",
+  "description": "Pagination metadata for list responses.",
+  "type": "object",
+  "properties": {
+    "page": {
+      "type": "int32",
+      "description": "Current page number.",
+      "example": 1
+    },
+    "per_page": {
+      "type": "int32",
+      "description": "Number of items per page.",
+      "example": 25
+    },
+    "total": {
+      "type": "int32",
+      "description": "Total number of items.",
+      "example": 150
+    }
+  }
+}
