@@ -1,0 +1,248 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: BetterCloud Platform API — Workflows
+  description: 'BetterCloud Platform API — Workflows. 5 operations. Lead operation: BetterCloud List Workflows. Self-contained
+    Naftiko capability covering one Bettercloud business surface.'
+  tags:
+  - Bettercloud
+  - Workflows
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BETTERCLOUD_API_KEY: BETTERCLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-workflows
+    baseUri: https://api.bettercloud.com/v1
+    description: BetterCloud Platform API — Workflows business capability. Self-contained, no shared references.
+    resources:
+    - name: workflows
+      path: /workflows
+      operations:
+      - name: listworkflows
+        method: GET
+        description: BetterCloud List Workflows
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number.
+        - name: status
+          in: query
+          type: string
+          description: Filter by workflow status.
+      - name: createworkflow
+        method: POST
+        description: BetterCloud Create Workflow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: workflows-id
+      path: /workflows/{id}
+      operations:
+      - name: getworkflow
+        method: GET
+        description: BetterCloud Get Workflow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The unique identifier of the workflow.
+          required: true
+      - name: deleteworkflow
+        method: DELETE
+        description: BetterCloud Delete Workflow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The unique identifier of the workflow.
+          required: true
+    - name: workflows-id-run
+      path: /workflows/{id}/run
+      operations:
+      - name: runworkflow
+        method: POST
+        description: BetterCloud Run Workflow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The unique identifier of the workflow.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: X-API-Key
+      value: '{{env.BETTERCLOUD_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: platform-workflows-rest
+    port: 8080
+    description: REST adapter for BetterCloud Platform API — Workflows. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/workflows
+      name: workflows
+      description: REST surface for workflows.
+      operations:
+      - method: GET
+        name: listworkflows
+        description: BetterCloud List Workflows
+        call: platform-workflows.listworkflows
+        with:
+          page: rest.page
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createworkflow
+        description: BetterCloud Create Workflow
+        call: platform-workflows.createworkflow
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workflows/{id}
+      name: workflows-id
+      description: REST surface for workflows-id.
+      operations:
+      - method: GET
+        name: getworkflow
+        description: BetterCloud Get Workflow
+        call: platform-workflows.getworkflow
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteworkflow
+        description: BetterCloud Delete Workflow
+        call: platform-workflows.deleteworkflow
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workflows/{id}/run
+      name: workflows-id-run
+      description: REST surface for workflows-id-run.
+      operations:
+      - method: POST
+        name: runworkflow
+        description: BetterCloud Run Workflow
+        call: platform-workflows.runworkflow
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: platform-workflows-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for BetterCloud Platform API — Workflows. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: bettercloud-list-workflows
+      description: BetterCloud List Workflows
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-workflows.listworkflows
+      with:
+        page: tools.page
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: bettercloud-create-workflow
+      description: BetterCloud Create Workflow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-workflows.createworkflow
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: bettercloud-get-workflow
+      description: BetterCloud Get Workflow
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-workflows.getworkflow
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: bettercloud-delete-workflow
+      description: BetterCloud Delete Workflow
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: platform-workflows.deleteworkflow
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: bettercloud-run-workflow
+      description: BetterCloud Run Workflow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-workflows.runworkflow
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
