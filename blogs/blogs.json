@@ -2,12 +2,20 @@
   "repo": "bettercloud",
   "feeds": [
     {
-      "source": "https://www.bettercloud.com/monitor/",
+      "source": "https://www.bettercloud.com/monitor/feed/",
       "feed_url": "https://www.bettercloud.com/monitor/feed/",
-      "title": "BetterCloud",
-      "saved": 4
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.bettercloud.com/pricing/",
+      "feed_url": "https://www.bettercloud.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "post_count": 15,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 21,
+  "fetched": "2026-06-01T23:35:02Z"
 }
