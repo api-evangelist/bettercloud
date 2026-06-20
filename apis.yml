@@ -4,7 +4,7 @@ description: BetterCloud is the end-to-end SaaS management platform that enables
   the growing SaaS environment. The platform provides automated workflows, security policies, and management capabilities
   for SaaS applications in enterprise environments, handling billions of API calls per day across 100+ SaaS application integrations.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Automation
 - Compliance
