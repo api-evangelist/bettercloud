@@ -40,15 +40,15 @@ apis:
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
   - type: OpenAPI
     url: https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/openapi/bettercloud-platform-api.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/platform-events.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/platform-groups.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/platform-integrations.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/platform-users.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/platform-workflows.yaml
 common:
 - type: LinkedIn
@@ -65,7 +65,7 @@ common:
   url: https://support.bettercloud.com/s/
 - type: Login
   url: https://support.bettercloud.com/s/login/
-- type: SignUp
+- type: Signup
   url: https://www.bettercloud.com/monitor/sign-up/
 - type: GitHubOrganization
   url: https://github.com/BetterCloud
