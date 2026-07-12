@@ -51,6 +51,10 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/platform-workflows.yaml
 common:
+- type: DomainSecurity
+  url: security/bettercloud-domain-security.yml
+- type: Authentication
+  url: authentication/bettercloud-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/bettercloud
 - type: Portal

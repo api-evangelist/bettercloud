@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/bettercloud-platform-api.yaml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: API key authentication. Provide your BetterCloud API key in the X-API-Key header.
+    Keys can be generated from the BetterCloud developer portal.
+  sources:
+  - openapi/bettercloud-platform-api.yaml
