@@ -51,6 +51,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/platform-workflows.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/bettercloud-agentic-access.yml
 - type: DomainSecurity
   url: security/bettercloud-domain-security.yml
 - type: Authentication
