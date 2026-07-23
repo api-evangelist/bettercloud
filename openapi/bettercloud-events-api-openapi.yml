@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: BetterCloud Platform Events API
+  description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
+  version: v1
+  contact:
+    name: BetterCloud Developer Support
+    url: https://developer.bettercloud.com/
+  x-generated-from: documentation
+servers:
+- url: https://api.bettercloud.com/v1
+  description: BetterCloud Platform API v1
+security:
+- apiKeyAuth: []
+tags:
+- name: Events
+  description: Query audit events and activity logs
+paths:
+  /events:
+    get:
+      operationId: listEvents
+      summary: BetterCloud List Events
+      description: Returns a paginated list of audit events and activity logs.
+      tags:
+      - Events
+      parameters:
+      - name: page
+        in: query
+        description: Page number.
+        required: false
+        schema:
+          type: integer
+        example: 1
+      - name: from
+        in: query
+        description: Start date for event filter (ISO 8601).
+        required: false
+        schema:
+          type: string
+          format: date-time
+        example: '2026-04-01T00:00:00Z'
+      - name: to
+        in: query
+        description: End date for event filter (ISO 8601).
+        required: false
+        schema:
+          type: string
+          format: date-time
+        example: '2026-04-19T23:59:59Z'
+      - name: type
+        in: query
+        description: Filter by event type.
+        required: false
+        schema:
+          type: string
+        example: user.suspended
+      - name: user_id
+        in: query
+        description: Filter events for a specific user.
+        required: false
+        schema:
+          type: string
+        example: user-a1b2c3d4
+      responses:
+        '200':
+          description: Paginated list of events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventListResponse'
+              examples:
+                ListEvents200Example:
+                  summary: Default listEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: evt-500100
+                      type: user.suspended
+                      actor_email: admin@example.com
+                      target_email: jsmith@example.com
+                      description: User suspended via BetterCloud workflow
+                      occurred_at: '2026-04-18T14:00:00Z'
+                    meta:
+                      page: 1
+                      per_page: 25
+                      total: 500
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EventListResponse:
+      title: Event List Response
+      description: Paginated list of audit events.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
+    Event:
+      title: Event
+      description: An audit event recording activity in BetterCloud or connected SaaS applications.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the event.
+          example: evt-500100
+        type:
+          type: string
+          description: Event type in dot-notation (e.g., user.suspended, group.created).
+          example: user.suspended
+        actor_email:
+          type: string
+          format: email
+          nullable: true
+          description: Email of the user or system that triggered the event.
+          example: admin@example.com
+        target_email:
+          type: string
+          format: email
+          nullable: true
+          description: Email of the user or resource affected by the event.
+          example: jsmith@example.com
+        description:
+          type: string
+          description: Human-readable description of what happened.
+          example: User suspended via BetterCloud workflow
+        occurred_at:
+          type: string
+          format: date-time
+          description: When the event occurred.
+          example: '2026-04-18T14:00:00Z'
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key authentication. Provide your BetterCloud API key in the X-API-Key header. Keys can be generated from the BetterCloud developer portal.

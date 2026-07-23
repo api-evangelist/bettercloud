@@ -1,0 +1,445 @@
+openapi: 3.0.3
+info:
+  title: BetterCloud Platform Events Groups API
+  description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
+  version: v1
+  contact:
+    name: BetterCloud Developer Support
+    url: https://developer.bettercloud.com/
+  x-generated-from: documentation
+servers:
+- url: https://api.bettercloud.com/v1
+  description: BetterCloud Platform API v1
+security:
+- apiKeyAuth: []
+tags:
+- name: Groups
+  description: Manage groups and group memberships
+paths:
+  /groups:
+    get:
+      operationId: listGroups
+      summary: BetterCloud List Groups
+      description: Returns a paginated list of groups from integrated directory services.
+      tags:
+      - Groups
+      parameters:
+      - name: page
+        in: query
+        description: Page number.
+        required: false
+        schema:
+          type: integer
+          default: 1
+        example: 1
+      - name: per_page
+        in: query
+        description: Results per page.
+        required: false
+        schema:
+          type: integer
+          default: 25
+        example: 25
+      responses:
+        '200':
+          description: Paginated list of groups.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+              examples:
+                ListGroups200Example:
+                  summary: Default listGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: group-x1y2z3
+                      name: Engineering Team
+                      email: engineering@example.com
+                      member_count: 45
+                      created_at: '2024-06-01T00:00:00Z'
+                    meta:
+                      page: 1
+                      per_page: 25
+                      total: 20
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createGroup
+      summary: BetterCloud Create Group
+      description: Creates a new group in the connected directory service.
+      tags:
+      - Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCreateRequest'
+            examples:
+              CreateGroupRequestExample:
+                summary: Default createGroup request
+                x-microcks-default: true
+                value:
+                  name: New Team
+                  email: newteam@example.com
+                  description: New team group
+      responses:
+        '201':
+          description: Group created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+              examples:
+                CreateGroup201Example:
+                  summary: Default createGroup 201 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      id: group-a9b8c7
+                      name: New Team
+                      email: newteam@example.com
+                      member_count: 0
+                      created_at: '2026-04-19T10:00:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{id}:
+    get:
+      operationId: getGroup
+      summary: BetterCloud Get Group
+      description: Returns a single group with its members.
+      tags:
+      - Groups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the group.
+        schema:
+          type: string
+        example: group-x1y2z3
+      responses:
+        '200':
+          description: Group details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+              examples:
+                GetGroup200Example:
+                  summary: Default getGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      id: group-x1y2z3
+                      name: Engineering Team
+                      email: engineering@example.com
+                      member_count: 45
+                      created_at: '2024-06-01T00:00:00Z'
+        '404':
+          description: Group not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteGroup
+      summary: BetterCloud Delete Group
+      description: Deletes a group from the connected directory service.
+      tags:
+      - Groups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the group.
+        schema:
+          type: string
+        example: group-x1y2z3
+      responses:
+        '204':
+          description: Group deleted successfully.
+        '404':
+          description: Group not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{id}/members:
+    get:
+      operationId: listGroupMembers
+      summary: BetterCloud List Group Members
+      description: Returns the members of a specific group.
+      tags:
+      - Groups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the group.
+        schema:
+          type: string
+        example: group-x1y2z3
+      responses:
+        '200':
+          description: List of group members.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMemberListResponse'
+              examples:
+                ListGroupMembers200Example:
+                  summary: Default listGroupMembers 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - user_id: user-a1b2c3d4
+                      email: jsmith@example.com
+                      name: Jane Smith
+                      role: member
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: addGroupMember
+      summary: BetterCloud Add Group Member
+      description: Adds a user to a group.
+      tags:
+      - Groups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the group.
+        schema:
+          type: string
+        example: group-x1y2z3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupMemberAddRequest'
+            examples:
+              AddGroupMemberRequestExample:
+                summary: Default addGroupMember request
+                x-microcks-default: true
+                value:
+                  user_id: user-a1b2c3d4
+      responses:
+        '201':
+          description: Member added successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMemberResponse'
+              examples:
+                AddGroupMember201Example:
+                  summary: Default addGroupMember 201 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      user_id: user-a1b2c3d4
+                      email: jsmith@example.com
+                      role: member
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    GroupCreateRequest:
+      title: Group Create Request
+      description: Request body for creating a group.
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Display name of the group.
+          example: New Team
+        email:
+          type: string
+          format: email
+          description: Email address of the group.
+          example: newteam@example.com
+        description:
+          type: string
+          description: Group description.
+          example: New team group
+    GroupMember:
+      title: Group Member
+      description: A member of a group.
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique identifier of the user.
+          example: user-a1b2c3d4
+        email:
+          type: string
+          format: email
+          description: Email of the group member.
+          example: jsmith@example.com
+        name:
+          type: string
+          description: Display name of the member.
+          example: Jane Smith
+        role:
+          type: string
+          description: Role in the group.
+          enum:
+          - owner
+          - manager
+          - member
+          example: member
+    GroupMemberResponse:
+      title: Group Member Response
+      description: Single group member response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/GroupMember'
+    GroupMemberAddRequest:
+      title: Group Member Add Request
+      description: Request body for adding a member to a group.
+      type: object
+      required:
+      - user_id
+      properties:
+        user_id:
+          type: string
+          description: ID of the user to add to the group.
+          example: user-a1b2c3d4
+        role:
+          type: string
+          description: Role to assign in the group.
+          enum:
+          - owner
+          - manager
+          - member
+          example: member
+    GroupMemberListResponse:
+      title: Group Member List Response
+      description: List of group members.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+    GroupListResponse:
+      title: Group List Response
+      description: Paginated list of groups.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response from BetterCloud API.
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: RESOURCE_NOT_FOUND
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+          example: err-500123
+        href:
+          type: string
+          description: Link to documentation for this error code.
+          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
+        reason:
+          type: string
+          description: Human-readable explanation of the error.
+          example: The requested resource was not found
+      required:
+      - code
+      - id
+      - href
+      - reason
+    Group:
+      title: Group
+      description: A group from an integrated directory service.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the group.
+          example: group-x1y2z3
+        name:
+          type: string
+          description: Display name of the group.
+          example: Engineering Team
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: Email address of the group.
+          example: engineering@example.com
+        description:
+          type: string
+          nullable: true
+          description: Description of the group.
+          example: Engineering department group
+        member_count:
+          type: integer
+          description: Number of members in the group.
+          example: 45
+        created_at:
+          type: string
+          format: date-time
+          description: When the group was created.
+          example: '2024-06-01T00:00:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the group was last updated.
+          example: '2026-03-01T00:00:00Z'
+    GroupResponse:
+      title: Group Response
+      description: Single group response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Group'
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key authentication. Provide your BetterCloud API key in the X-API-Key header. Keys can be generated from the BetterCloud developer portal.

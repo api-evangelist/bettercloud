@@ -1,0 +1,99 @@
+openapi: 3.0.3
+info:
+  title: BetterCloud Platform Events Integrations API
+  description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
+  version: v1
+  contact:
+    name: BetterCloud Developer Support
+    url: https://developer.bettercloud.com/
+  x-generated-from: documentation
+servers:
+- url: https://api.bettercloud.com/v1
+  description: BetterCloud Platform API v1
+security:
+- apiKeyAuth: []
+tags:
+- name: Integrations
+  description: Manage SaaS application integrations and connections
+paths:
+  /integrations:
+    get:
+      operationId: listIntegrations
+      summary: BetterCloud List Integrations
+      description: Returns a list of all configured SaaS application integrations.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: List of integrations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationListResponse'
+              examples:
+                ListIntegrations200Example:
+                  summary: Default listIntegrations 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: int-g001
+                      name: Google Workspace
+                      type: google_workspace
+                      status: connected
+                      connected_at: '2025-01-10T00:00:00Z'
+                    - id: int-s001
+                      name: Slack
+                      type: slack
+                      status: connected
+                      connected_at: '2025-01-10T00:00:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Integration:
+      title: Integration
+      description: A connected SaaS application integration in BetterCloud.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the integration.
+          example: int-g001
+        name:
+          type: string
+          description: Display name of the integration.
+          example: Google Workspace
+        type:
+          type: string
+          description: Integration type identifier.
+          example: google_workspace
+        status:
+          type: string
+          description: Connection status.
+          enum:
+          - connected
+          - disconnected
+          - error
+          example: connected
+        connected_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the integration was connected.
+          example: '2025-01-10T00:00:00Z'
+    IntegrationListResponse:
+      title: Integration List Response
+      description: List of configured SaaS integrations.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key authentication. Provide your BetterCloud API key in the X-API-Key header. Keys can be generated from the BetterCloud developer portal.

@@ -1,0 +1,427 @@
+openapi: 3.0.3
+info:
+  title: BetterCloud Platform Events Workflows API
+  description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
+  version: v1
+  contact:
+    name: BetterCloud Developer Support
+    url: https://developer.bettercloud.com/
+  x-generated-from: documentation
+servers:
+- url: https://api.bettercloud.com/v1
+  description: BetterCloud Platform API v1
+security:
+- apiKeyAuth: []
+tags:
+- name: Workflows
+  description: Manage automation workflows and triggers
+paths:
+  /workflows:
+    get:
+      operationId: listWorkflows
+      summary: BetterCloud List Workflows
+      description: Returns a paginated list of all automation workflows.
+      tags:
+      - Workflows
+      parameters:
+      - name: page
+        in: query
+        description: Page number.
+        required: false
+        schema:
+          type: integer
+        example: 1
+      - name: status
+        in: query
+        description: Filter by workflow status.
+        required: false
+        schema:
+          type: string
+          enum:
+          - active
+          - inactive
+          - draft
+        example: active
+      responses:
+        '200':
+          description: Paginated list of workflows.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowListResponse'
+              examples:
+                ListWorkflows200Example:
+                  summary: Default listWorkflows 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: wf-100200
+                      name: Employee Offboarding
+                      description: Automated offboarding workflow for departing employees
+                      status: active
+                      trigger_type: manual
+                      action_count: 12
+                      created_at: '2025-03-01T00:00:00Z'
+                      updated_at: '2026-04-01T00:00:00Z'
+                    meta:
+                      page: 1
+                      per_page: 25
+                      total: 8
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createWorkflow
+      summary: BetterCloud Create Workflow
+      description: Creates a new automation workflow.
+      tags:
+      - Workflows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowCreateRequest'
+            examples:
+              CreateWorkflowRequestExample:
+                summary: Default createWorkflow request
+                x-microcks-default: true
+                value:
+                  name: New Employee Onboarding
+                  description: Automated onboarding workflow for new hires
+                  trigger_type: event
+                  status: draft
+      responses:
+        '201':
+          description: Workflow created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowResponse'
+              examples:
+                CreateWorkflow201Example:
+                  summary: Default createWorkflow 201 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      id: wf-100300
+                      name: New Employee Onboarding
+                      description: Automated onboarding workflow for new hires
+                      status: draft
+                      trigger_type: event
+                      action_count: 0
+                      created_at: '2026-04-19T10:00:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /workflows/{id}:
+    get:
+      operationId: getWorkflow
+      summary: BetterCloud Get Workflow
+      description: Returns a single workflow by ID.
+      tags:
+      - Workflows
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the workflow.
+        schema:
+          type: string
+        example: wf-100200
+      responses:
+        '200':
+          description: Workflow details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowResponse'
+              examples:
+                GetWorkflow200Example:
+                  summary: Default getWorkflow 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      id: wf-100200
+                      name: Employee Offboarding
+                      description: Automated offboarding workflow for departing employees
+                      status: active
+                      trigger_type: manual
+                      action_count: 12
+                      created_at: '2025-03-01T00:00:00Z'
+                      updated_at: '2026-04-01T00:00:00Z'
+        '404':
+          description: Workflow not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteWorkflow
+      summary: BetterCloud Delete Workflow
+      description: Deletes an automation workflow.
+      tags:
+      - Workflows
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the workflow.
+        schema:
+          type: string
+        example: wf-100200
+      responses:
+        '204':
+          description: Workflow deleted successfully.
+        '404':
+          description: Workflow not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /workflows/{id}/run:
+    post:
+      operationId: runWorkflow
+      summary: BetterCloud Run Workflow
+      description: Manually triggers a workflow execution for specified users.
+      tags:
+      - Workflows
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the workflow.
+        schema:
+          type: string
+        example: wf-100200
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowRunRequest'
+            examples:
+              RunWorkflowRequestExample:
+                summary: Default runWorkflow request
+                x-microcks-default: true
+                value:
+                  user_ids:
+                  - user-a1b2c3d4
+      responses:
+        '202':
+          description: Workflow execution initiated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowRunResponse'
+              examples:
+                RunWorkflow202Example:
+                  summary: Default runWorkflow 202 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      execution_id: exec-900100
+                      workflow_id: wf-100200
+                      status: running
+                      started_at: '2026-04-19T10:00:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    WorkflowResponse:
+      title: Workflow Response
+      description: Single workflow response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Workflow'
+    WorkflowCreateRequest:
+      title: Workflow Create Request
+      description: Request body for creating a workflow.
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Name of the workflow.
+          example: New Employee Onboarding
+        description:
+          type: string
+          description: Description of the workflow.
+          example: Automated onboarding workflow for new hires
+        trigger_type:
+          type: string
+          description: Trigger type for the workflow.
+          enum:
+          - manual
+          - event
+          - scheduled
+          example: event
+        status:
+          type: string
+          description: Initial status.
+          enum:
+          - active
+          - draft
+          example: draft
+    WorkflowRunRequest:
+      title: Workflow Run Request
+      description: Request body for triggering a workflow execution.
+      type: object
+      required:
+      - user_ids
+      properties:
+        user_ids:
+          type: array
+          items:
+            type: string
+          description: List of user IDs to run the workflow for.
+          example:
+          - user-a1b2c3d4
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response from BetterCloud API.
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: RESOURCE_NOT_FOUND
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+          example: err-500123
+        href:
+          type: string
+          description: Link to documentation for this error code.
+          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
+        reason:
+          type: string
+          description: Human-readable explanation of the error.
+          example: The requested resource was not found
+      required:
+      - code
+      - id
+      - href
+      - reason
+    WorkflowListResponse:
+      title: Workflow List Response
+      description: Paginated list of workflows.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
+    Workflow:
+      title: Workflow
+      description: An automation workflow that can be triggered to execute actions across SaaS applications.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the workflow.
+          example: wf-100200
+        name:
+          type: string
+          description: Display name of the workflow.
+          example: Employee Offboarding
+        description:
+          type: string
+          nullable: true
+          description: Description of what the workflow does.
+          example: Automated offboarding workflow for departing employees
+        status:
+          type: string
+          description: Current status of the workflow.
+          enum:
+          - active
+          - inactive
+          - draft
+          example: active
+        trigger_type:
+          type: string
+          description: How the workflow is triggered.
+          enum:
+          - manual
+          - event
+          - scheduled
+          example: manual
+        action_count:
+          type: integer
+          description: Number of actions in the workflow.
+          example: 12
+        created_at:
+          type: string
+          format: date-time
+          description: When the workflow was created.
+          example: '2025-03-01T00:00:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the workflow was last updated.
+          example: '2026-04-01T00:00:00Z'
+    WorkflowRunResponse:
+      title: Workflow Run Response
+      description: Response from triggering a workflow execution.
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            execution_id:
+              type: string
+              description: Unique ID of this workflow execution.
+              example: exec-900100
+            workflow_id:
+              type: string
+              description: ID of the workflow being executed.
+              example: wf-100200
+            status:
+              type: string
+              description: Current execution status.
+              enum:
+              - pending
+              - running
+              - completed
+              - failed
+              example: running
+            started_at:
+              type: string
+              format: date-time
+              description: When the execution started.
+              example: '2026-04-19T10:00:00Z'
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key authentication. Provide your BetterCloud API key in the X-API-Key header. Keys can be generated from the BetterCloud developer portal.

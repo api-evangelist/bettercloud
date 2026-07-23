@@ -1,0 +1,421 @@
+openapi: 3.0.3
+info:
+  title: BetterCloud Platform Events Users API
+  description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
+  version: v1
+  contact:
+    name: BetterCloud Developer Support
+    url: https://developer.bettercloud.com/
+  x-generated-from: documentation
+servers:
+- url: https://api.bettercloud.com/v1
+  description: BetterCloud Platform API v1
+security:
+- apiKeyAuth: []
+tags:
+- name: Users
+  description: Manage users across integrated SaaS applications
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: BetterCloud List Users
+      description: Returns a paginated list of users discovered across all integrated SaaS applications.
+      tags:
+      - Users
+      parameters:
+      - name: page
+        in: query
+        description: Page number for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 1
+        example: 1
+      - name: per_page
+        in: query
+        description: Number of results per page (max 100).
+        required: false
+        schema:
+          type: integer
+          default: 25
+          maximum: 100
+        example: 25
+      - name: email
+        in: query
+        description: Filter users by email address.
+        required: false
+        schema:
+          type: string
+          format: email
+        example: jsmith@example.com
+      - name: status
+        in: query
+        description: Filter users by status.
+        required: false
+        schema:
+          type: string
+          enum:
+          - active
+          - suspended
+          - deprovisioned
+        example: active
+      responses:
+        '200':
+          description: Paginated list of users.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+              examples:
+                ListUsers200Example:
+                  summary: Default listUsers 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: user-a1b2c3d4
+                      email: jsmith@example.com
+                      first_name: Jane
+                      last_name: Smith
+                      status: active
+                      department: Engineering
+                      title: Senior Engineer
+                      created_at: '2025-01-15T10:00:00Z'
+                      updated_at: '2026-04-01T08:30:00Z'
+                    meta:
+                      page: 1
+                      per_page: 25
+                      total: 150
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{id}:
+    get:
+      operationId: getUser
+      summary: BetterCloud Get User
+      description: Returns a single user by ID with their SaaS application details.
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the user.
+        schema:
+          type: string
+        example: user-a1b2c3d4
+      responses:
+        '200':
+          description: User details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                GetUser200Example:
+                  summary: Default getUser 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      id: user-a1b2c3d4
+                      email: jsmith@example.com
+                      first_name: Jane
+                      last_name: Smith
+                      status: active
+                      department: Engineering
+                      title: Senior Engineer
+                      manager_email: manager@example.com
+                      location: San Francisco
+                      created_at: '2025-01-15T10:00:00Z'
+                      updated_at: '2026-04-01T08:30:00Z'
+        '404':
+          description: User not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateUser
+      summary: BetterCloud Update User
+      description: Updates user attributes across integrated SaaS applications.
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the user.
+        schema:
+          type: string
+        example: user-a1b2c3d4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+            examples:
+              UpdateUserRequestExample:
+                summary: Default updateUser request
+                x-microcks-default: true
+                value:
+                  department: Product
+                  title: Product Manager
+      responses:
+        '200':
+          description: User updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                UpdateUser200Example:
+                  summary: Default updateUser 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      id: user-a1b2c3d4
+                      email: jsmith@example.com
+                      first_name: Jane
+                      last_name: Smith
+                      status: active
+                      department: Product
+                      title: Product Manager
+                      updated_at: '2026-04-19T10:00:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{id}/suspend:
+    post:
+      operationId: suspendUser
+      summary: BetterCloud Suspend User
+      description: Suspends a user across all integrated SaaS applications.
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the user.
+        schema:
+          type: string
+        example: user-a1b2c3d4
+      responses:
+        '200':
+          description: User suspended successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                SuspendUser200Example:
+                  summary: Default suspendUser 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      id: user-a1b2c3d4
+                      email: jsmith@example.com
+                      status: suspended
+                      updated_at: '2026-04-19T10:00:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{id}/deprovision:
+    post:
+      operationId: deprovisionUser
+      summary: BetterCloud Deprovision User
+      description: Deprovisions a user and removes access across all integrated SaaS applications.
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the user.
+        schema:
+          type: string
+        example: user-a1b2c3d4
+      responses:
+        '200':
+          description: User deprovisioned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                DeprovisionUser200Example:
+                  summary: Default deprovisionUser 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      id: user-a1b2c3d4
+                      email: jsmith@example.com
+                      status: deprovisioned
+                      updated_at: '2026-04-19T10:00:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UserListResponse:
+      title: User List Response
+      description: Paginated list of users.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response from BetterCloud API.
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: RESOURCE_NOT_FOUND
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+          example: err-500123
+        href:
+          type: string
+          description: Link to documentation for this error code.
+          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
+        reason:
+          type: string
+          description: Human-readable explanation of the error.
+          example: The requested resource was not found
+      required:
+      - code
+      - id
+      - href
+      - reason
+    User:
+      title: User
+      description: A user discovered and managed across BetterCloud integrations.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the user in BetterCloud.
+          example: user-a1b2c3d4
+        email:
+          type: string
+          format: email
+          description: Primary email address of the user.
+          example: jsmith@example.com
+        first_name:
+          type: string
+          description: User's first name.
+          example: Jane
+        last_name:
+          type: string
+          description: User's last name.
+          example: Smith
+        status:
+          type: string
+          description: Current status of the user.
+          enum:
+          - active
+          - suspended
+          - deprovisioned
+          example: active
+        department:
+          type: string
+          nullable: true
+          description: Department or organizational unit.
+          example: Engineering
+        title:
+          type: string
+          nullable: true
+          description: Job title.
+          example: Senior Engineer
+        manager_email:
+          type: string
+          format: email
+          nullable: true
+          description: Email of the user's manager.
+          example: manager@example.com
+        location:
+          type: string
+          nullable: true
+          description: Office location.
+          example: San Francisco
+        created_at:
+          type: string
+          format: date-time
+          description: When the user was first discovered.
+          example: '2025-01-15T10:00:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          description: When the user record was last updated.
+          example: '2026-04-01T08:30:00Z'
+    UserUpdateRequest:
+      title: User Update Request
+      description: Fields to update on a user (all optional).
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: New first name.
+          example: Jane
+        last_name:
+          type: string
+          description: New last name.
+          example: Smith
+        department:
+          type: string
+          description: New department.
+          example: Product
+        title:
+          type: string
+          description: New job title.
+          example: Product Manager
+        location:
+          type: string
+          description: New office location.
+          example: New York
+    UserResponse:
+      title: User Response
+      description: Single user response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key authentication. Provide your BetterCloud API key in the X-API-Key header. Keys can be generated from the BetterCloud developer portal.
