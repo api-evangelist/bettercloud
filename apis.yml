@@ -4,7 +4,20 @@ description: BetterCloud is the end-to-end SaaS management platform that enables
   the growing SaaS environment. The platform provides automated workflows, security policies, and management capabilities
   for SaaS applications in enterprise environments, handling billions of API calls per day across 100+ SaaS application integrations.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bettercloud.png
 tags:
 - Automation
 - Compliance
@@ -19,27 +32,116 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: bettercloud:bettercloud-platform-api
-  name: BetterCloud Platform API
-  description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows,
-    user lifecycle management, and security policies. It enables IT and security teams to programmatically automate management
-    workflows and enforce security policies across cloud technology stacks using standard HTTP methods.
+- aid: bettercloud:bettercloud-events-api
+  name: BetterCloud Events API
+  description: Query audit events and activity logs
   humanURL: https://developer.bettercloud.com/
   baseURL: https://api.bettercloud.com/v1
   tags:
-  - Automation
-  - REST API
-  - SaaS Management
-  - Security
-  - User Lifecycle
-  - Workflows
+  - Events
   properties:
+  - type: OpenAPI
+    url: openapi/bettercloud-events-api-openapi.yml
   - type: Documentation
     url: https://developer.bettercloud.com/
   - type: GettingStarted
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
+  - type: X-NaftikoCapability
+    url: capabilities/platform-events.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-integrations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-users.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-workflows.yaml
+- aid: bettercloud:bettercloud-groups-api
+  name: BetterCloud Groups API
+  description: Manage groups and group memberships
+  humanURL: https://developer.bettercloud.com/
+  baseURL: https://api.bettercloud.com/v1
+  tags:
+  - Groups
+  properties:
   - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/bettercloud/refs/heads/main/openapi/bettercloud-platform-api.yaml
+    url: openapi/bettercloud-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developer.bettercloud.com/
+  - type: GettingStarted
+    url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
+  - type: X-NaftikoCapability
+    url: capabilities/platform-events.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-integrations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-users.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-workflows.yaml
+- aid: bettercloud:bettercloud-integrations-api
+  name: BetterCloud Integrations API
+  description: Manage SaaS application integrations and connections
+  humanURL: https://developer.bettercloud.com/
+  baseURL: https://api.bettercloud.com/v1
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/bettercloud-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.bettercloud.com/
+  - type: GettingStarted
+    url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
+  - type: X-NaftikoCapability
+    url: capabilities/platform-events.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-integrations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-users.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-workflows.yaml
+- aid: bettercloud:bettercloud-users-api
+  name: BetterCloud Users API
+  description: Manage users across integrated SaaS applications
+  humanURL: https://developer.bettercloud.com/
+  baseURL: https://api.bettercloud.com/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/bettercloud-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.bettercloud.com/
+  - type: GettingStarted
+    url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
+  - type: X-NaftikoCapability
+    url: capabilities/platform-events.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-groups.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-integrations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-users.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/platform-workflows.yaml
+- aid: bettercloud:bettercloud-workflows-api
+  name: BetterCloud Workflows API
+  description: Manage automation workflows and triggers
+  humanURL: https://developer.bettercloud.com/
+  baseURL: https://api.bettercloud.com/v1
+  tags:
+  - Workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/bettercloud-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://developer.bettercloud.com/
+  - type: GettingStarted
+    url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
   - type: X-NaftikoCapability
     url: capabilities/platform-events.yaml
   - type: X-NaftikoCapability
@@ -51,6 +153,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/platform-workflows.yaml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/bettercloud/overview
 - type: AgenticAccess
   url: agentic-access/bettercloud-agentic-access.yml
 - type: DomainSecurity
