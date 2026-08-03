@@ -1,0 +1,736 @@
+{
+  "info": {
+    "_postman_id": "59652b4f-8c89-42d7-a17b-5cb318517ee0",
+    "name": "BetterCloud Platform Events Groups API",
+    "description": "The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.\n\nContact Support:\n Name: BetterCloud Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:12:08.000Z",
+    "updatedAt": "2026-07-28T01:12:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-59652b4f-8c89-42d7-a17b-5cb318517ee0"
+  },
+  "item": [
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "members",
+              "item": [
+                {
+                  "name": "BetterCloud List Group Members",
+                  "id": "d323e0f5-ddb0-4243-9f9c-f1424240ed19",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:id/members",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":id",
+                        "members"
+                      ],
+                      "variable": [
+                        {
+                          "id": "967c3232-65a0-4548-ab2b-ea3ca94ed86d",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the group."
+                        }
+                      ]
+                    },
+                    "description": "Returns the members of a specific group."
+                  },
+                  "response": [
+                    {
+                      "id": "e01f7aed-b7c4-4ea5-b733-97ab8a8a9d06",
+                      "name": "List of group members.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:id/members",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":id",
+                            "members"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"user_id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"name\": \"<string>\",\n      \"role\": \"owner\"\n    },\n    {\n      \"user_id\": \"<string>\",\n      \"email\": \"<email>\",\n      \"name\": \"<string>\",\n      \"role\": \"owner\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:12:08.000Z",
+                      "updatedAt": "2026-07-28T01:12:08.000Z",
+                      "uid": "35240-e01f7aed-b7c4-4ea5-b733-97ab8a8a9d06"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:08.000Z",
+                  "updatedAt": "2026-07-28T01:12:08.000Z",
+                  "uid": "35240-d323e0f5-ddb0-4243-9f9c-f1424240ed19"
+                },
+                {
+                  "name": "BetterCloud Add Group Member",
+                  "id": "8192c930-ad2f-49c3-bd8b-1fc4806e73dc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_id\": \"<string>\",\n  \"role\": \"owner\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:id/members",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":id",
+                        "members"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8511ea70-6202-4115-b50e-e9dd413e84b2",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the group."
+                        }
+                      ]
+                    },
+                    "description": "Adds a user to a group."
+                  },
+                  "response": [
+                    {
+                      "id": "bb47270c-6d2e-4e8f-8c70-0a3328817acf",
+                      "name": "Member added successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<string>\",\n  \"role\": \"owner\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:id/members",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":id",
+                            "members"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"user_id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"role\": \"manager\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:12:08.000Z",
+                      "updatedAt": "2026-07-28T01:12:08.000Z",
+                      "uid": "35240-bb47270c-6d2e-4e8f-8c70-0a3328817acf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:12:08.000Z",
+                  "updatedAt": "2026-07-28T01:12:08.000Z",
+                  "uid": "35240-8192c930-ad2f-49c3-bd8b-1fc4806e73dc"
+                }
+              ],
+              "id": "c4b22ec5-beda-449d-9bc1-792fa9818928",
+              "createdAt": "2026-07-28T01:12:08.000Z",
+              "updatedAt": "2026-07-28T01:12:08.000Z",
+              "uid": "35240-c4b22ec5-beda-449d-9bc1-792fa9818928"
+            },
+            {
+              "name": "BetterCloud Get Group",
+              "id": "7ba40c38-76c0-4edb-9cb3-d66058c653c8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e83a860e-7c62-426e-ac44-040de68d165a",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the group."
+                    }
+                  ]
+                },
+                "description": "Returns a single group with its members."
+              },
+              "response": [
+                {
+                  "id": "48f5754a-819e-4bbd-a3a4-5cd0261fa347",
+                  "name": "Group details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-API-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"description\": \"<string>\",\n    \"member_count\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:12:08.000Z",
+                  "updatedAt": "2026-07-28T01:12:08.000Z",
+                  "uid": "35240-48f5754a-819e-4bbd-a3a4-5cd0261fa347"
+                },
+                {
+                  "id": "14deb1d9-c003-447e-a07b-1e46dc639a0c",
+                  "name": "Group not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-API-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"id\": \"<string>\",\n  \"href\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:12:08.000Z",
+                  "updatedAt": "2026-07-28T01:12:08.000Z",
+                  "uid": "35240-14deb1d9-c003-447e-a07b-1e46dc639a0c"
+                }
+              ],
+              "createdAt": "2026-07-28T01:12:08.000Z",
+              "updatedAt": "2026-07-28T01:12:08.000Z",
+              "uid": "35240-7ba40c38-76c0-4edb-9cb3-d66058c653c8"
+            },
+            {
+              "name": "BetterCloud Delete Group",
+              "id": "a0cea3ad-b269-4cac-b8ae-27f20385a8bd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "913194b8-0f70-4c8b-8ac7-58116c23de82",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the group."
+                    }
+                  ]
+                },
+                "description": "Deletes a group from the connected directory service."
+              },
+              "response": [
+                {
+                  "id": "0067a64c-2ad0-4d24-99a4-6b581bdcb93f",
+                  "name": "Group deleted successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-API-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:12:08.000Z",
+                  "updatedAt": "2026-07-28T01:12:08.000Z",
+                  "uid": "35240-0067a64c-2ad0-4d24-99a4-6b581bdcb93f"
+                },
+                {
+                  "id": "41d06408-3390-41ed-89ab-1aed54e20f3f",
+                  "name": "Group not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-API-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"id\": \"<string>\",\n  \"href\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:12:08.000Z",
+                  "updatedAt": "2026-07-28T01:12:08.000Z",
+                  "uid": "35240-41d06408-3390-41ed-89ab-1aed54e20f3f"
+                }
+              ],
+              "createdAt": "2026-07-28T01:12:08.000Z",
+              "updatedAt": "2026-07-28T01:12:08.000Z",
+              "uid": "35240-a0cea3ad-b269-4cac-b8ae-27f20385a8bd"
+            }
+          ],
+          "id": "40a702a9-f8ef-4941-af82-5691fc38498f",
+          "createdAt": "2026-07-28T01:12:08.000Z",
+          "updatedAt": "2026-07-28T01:12:08.000Z",
+          "uid": "35240-40a702a9-f8ef-4941-af82-5691fc38498f"
+        },
+        {
+          "name": "BetterCloud List Groups",
+          "id": "ad1bbda0-a947-4f38-a6f4-61b5fe5ec70d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/groups?page=1&per_page=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ],
+              "query": [
+                {
+                  "description": "Page number.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Results per page.",
+                  "key": "per_page",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of groups from integrated directory services."
+          },
+          "response": [
+            {
+              "id": "eb484391-bfa4-4acb-90bf-a3371ba506a5",
+              "name": "Paginated list of groups.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Results per page.",
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"description\": \"<string>\",\n      \"member_count\": \"<integer>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"description\": \"<string>\",\n      \"member_count\": \"<integer>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"page\": \"<integer>\",\n    \"per_page\": \"<integer>\",\n    \"total\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:12:08.000Z",
+              "updatedAt": "2026-07-28T01:12:08.000Z",
+              "uid": "35240-eb484391-bfa4-4acb-90bf-a3371ba506a5"
+            }
+          ],
+          "createdAt": "2026-07-28T01:12:08.000Z",
+          "updatedAt": "2026-07-28T01:12:08.000Z",
+          "uid": "35240-ad1bbda0-a947-4f38-a6f4-61b5fe5ec70d"
+        },
+        {
+          "name": "BetterCloud Create Group",
+          "id": "c314e813-760e-4857-ad9e-466672091153",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ]
+            },
+            "description": "Creates a new group in the connected directory service."
+          },
+          "response": [
+            {
+              "id": "ccb0bdbd-db10-45a8-b7ec-7fb219b974b1",
+              "name": "Group created successfully.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"description\": \"<string>\",\n    \"member_count\": \"<integer>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:12:08.000Z",
+              "updatedAt": "2026-07-28T01:12:08.000Z",
+              "uid": "35240-ccb0bdbd-db10-45a8-b7ec-7fb219b974b1"
+            }
+          ],
+          "createdAt": "2026-07-28T01:12:08.000Z",
+          "updatedAt": "2026-07-28T01:12:08.000Z",
+          "uid": "35240-c314e813-760e-4857-ad9e-466672091153"
+        }
+      ],
+      "id": "919a44ff-c608-457e-a435-56dab0e5f472",
+      "createdAt": "2026-07-28T01:12:08.000Z",
+      "updatedAt": "2026-07-28T01:12:08.000Z",
+      "uid": "35240-919a44ff-c608-457e-a435-56dab0e5f472"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.bettercloud.com/v1"
+    }
+  ]
+}

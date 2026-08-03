@@ -1,0 +1,22 @@
+{
+  "provider": "bettercloud",
+  "sources": [
+    "bettercloud-events-api-openapi.yml",
+    "bettercloud-groups-api-openapi.yml",
+    "bettercloud-integrations-api-openapi.yml",
+    "bettercloud-users-api-openapi.yml",
+    "bettercloud-workflows-api-openapi.yml"
+  ],
+  "outputs": [
+    "bettercloud-events-api-openapi.yml",
+    "bettercloud-groups-api-openapi.yml",
+    "bettercloud-integrations-api-openapi.yml",
+    "bettercloud-users-api-openapi.yml",
+    "bettercloud-workflows-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
