@@ -46,16 +46,6 @@ apis:
     url: https://developer.bettercloud.com/
   - type: GettingStarted
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
-  - type: X-NaftikoCapability
-    url: capabilities/platform-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-integrations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-users.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-workflows.yaml
 - aid: bettercloud:bettercloud-groups-api
   name: BetterCloud Groups API
   description: Manage groups and group memberships
@@ -70,16 +60,6 @@ apis:
     url: https://developer.bettercloud.com/
   - type: GettingStarted
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
-  - type: X-NaftikoCapability
-    url: capabilities/platform-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-integrations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-users.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-workflows.yaml
 - aid: bettercloud:bettercloud-integrations-api
   name: BetterCloud Integrations API
   description: Manage SaaS application integrations and connections
@@ -94,16 +74,6 @@ apis:
     url: https://developer.bettercloud.com/
   - type: GettingStarted
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
-  - type: X-NaftikoCapability
-    url: capabilities/platform-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-integrations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-users.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-workflows.yaml
 - aid: bettercloud:bettercloud-users-api
   name: BetterCloud Users API
   description: Manage users across integrated SaaS applications
@@ -118,16 +88,6 @@ apis:
     url: https://developer.bettercloud.com/
   - type: GettingStarted
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
-  - type: X-NaftikoCapability
-    url: capabilities/platform-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-integrations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-users.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-workflows.yaml
 - aid: bettercloud:bettercloud-workflows-api
   name: BetterCloud Workflows API
   description: Manage automation workflows and triggers
@@ -142,16 +102,6 @@ apis:
     url: https://developer.bettercloud.com/
   - type: GettingStarted
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
-  - type: X-NaftikoCapability
-    url: capabilities/platform-events.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-groups.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-integrations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-users.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/platform-workflows.yaml
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/bettercloud/overview
