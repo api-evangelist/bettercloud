@@ -1,0 +1,127 @@
+{
+  "item": [
+    {
+      "id": "7fae6ec0-2296-4218-b677-9ed81a691fd9",
+      "name": "Integrations",
+      "description": {
+        "content": "Manage SaaS application integrations and connections",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5f001ddd-6875-4e58-b9b7-8ad55274a39f",
+          "name": "BetterCloud List Integrations",
+          "request": {
+            "name": "BetterCloud List Integrations",
+            "description": {
+              "content": "Returns a list of all configured SaaS application integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f748100-f48c-4c93-a374-b1a86ceeefb2",
+              "name": "List of integrations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"int-g001\",\n      \"name\": \"Google Workspace\",\n      \"type\": \"google_workspace\",\n      \"status\": \"connected\",\n      \"connected_at\": \"2025-01-10T00:00:00Z\"\n    },\n    {\n      \"id\": \"int-s001\",\n      \"name\": \"Slack\",\n      \"type\": \"slack\",\n      \"status\": \"connected\",\n      \"connected_at\": \"2025-01-10T00:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bettercloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e5b29e79-7072-44f4-b6b8-0fd2c6886569",
+    "name": "BetterCloud Platform Events Integrations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.\n\nContact Support:\n Name: BetterCloud Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

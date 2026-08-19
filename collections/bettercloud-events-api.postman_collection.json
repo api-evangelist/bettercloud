@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "282988dc-0a81-453c-94f0-caa3d1a4f74e",
+      "name": "Events",
+      "description": {
+        "content": "Query audit events and activity logs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "337c6fc9-990b-4c96-8b02-b7204ea7711c",
+          "name": "BetterCloud List Events",
+          "request": {
+            "name": "BetterCloud List Events",
+            "description": {
+              "content": "Returns a paginated list of audit events and activity logs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "Start date for event filter (ISO 8601)."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "End date for event filter (ISO 8601)."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by event type."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter events for a specific user."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2d42144-8833-4d65-8091-693bb5b7e8b1",
+              "name": "Paginated list of events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-04-01T00:00:00Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2026-04-19T23:59:59Z"
+                    },
+                    {
+                      "key": "type",
+                      "value": "user.suspended"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "user-a1b2c3d4"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"evt-500100\",\n      \"type\": \"user.suspended\",\n      \"actor_email\": \"admin@example.com\",\n      \"target_email\": \"jsmith@example.com\",\n      \"description\": \"User suspended via BetterCloud workflow\",\n      \"occurred_at\": \"2026-04-18T14:00:00Z\"\n    }\n  ],\n  \"meta\": {\n    \"page\": 1,\n    \"per_page\": 25,\n    \"total\": 500\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bettercloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a9964ea4-10f1-40c8-bac0-6820226e26ac",
+    "name": "BetterCloud Platform Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.\n\nContact Support:\n Name: BetterCloud Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

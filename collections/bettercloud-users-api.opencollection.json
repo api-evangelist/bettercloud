@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BetterCloud Platform Events Users API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BetterCloud List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bettercloud.com/v1/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "per_page",
+                "value": "25",
+                "type": "query",
+                "description": "Number of results per page (max 100)."
+              },
+              {
+                "name": "email",
+                "value": "jsmith@example.com",
+                "type": "query",
+                "description": "Filter users by email address."
+              },
+              {
+                "name": "status",
+                "value": "active",
+                "type": "query",
+                "description": "Filter users by status."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of users discovered across all integrated SaaS applications."
+        },
+        {
+          "info": {
+            "name": "BetterCloud Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bettercloud.com/v1/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "user-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the user."
+              }
+            ]
+          },
+          "docs": "Returns a single user by ID with their SaaS application details."
+        },
+        {
+          "info": {
+            "name": "BetterCloud Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.bettercloud.com/v1/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "user-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates user attributes across integrated SaaS applications."
+        },
+        {
+          "info": {
+            "name": "BetterCloud Suspend User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.bettercloud.com/v1/users/:id/suspend",
+            "params": [
+              {
+                "name": "id",
+                "value": "user-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the user."
+              }
+            ]
+          },
+          "docs": "Suspends a user across all integrated SaaS applications."
+        },
+        {
+          "info": {
+            "name": "BetterCloud Deprovision User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.bettercloud.com/v1/users/:id/deprovision",
+            "params": [
+              {
+                "name": "id",
+                "value": "user-a1b2c3d4",
+                "type": "path",
+                "description": "The unique identifier of the user."
+              }
+            ]
+          },
+          "docs": "Deprovisions a user and removes access across all integrated SaaS applications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

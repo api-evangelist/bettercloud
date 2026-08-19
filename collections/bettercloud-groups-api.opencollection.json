@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BetterCloud Platform Events Groups API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BetterCloud List Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bettercloud.com/v1/groups",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "per_page",
+                "value": "25",
+                "type": "query",
+                "description": "Results per page."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of groups from integrated directory services."
+        },
+        {
+          "info": {
+            "name": "BetterCloud Create Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.bettercloud.com/v1/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new group in the connected directory service."
+        },
+        {
+          "info": {
+            "name": "BetterCloud Get Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bettercloud.com/v1/groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "group-x1y2z3",
+                "type": "path",
+                "description": "The unique identifier of the group."
+              }
+            ]
+          },
+          "docs": "Returns a single group with its members."
+        },
+        {
+          "info": {
+            "name": "BetterCloud Delete Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.bettercloud.com/v1/groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "group-x1y2z3",
+                "type": "path",
+                "description": "The unique identifier of the group."
+              }
+            ]
+          },
+          "docs": "Deletes a group from the connected directory service."
+        },
+        {
+          "info": {
+            "name": "BetterCloud List Group Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bettercloud.com/v1/groups/:id/members",
+            "params": [
+              {
+                "name": "id",
+                "value": "group-x1y2z3",
+                "type": "path",
+                "description": "The unique identifier of the group."
+              }
+            ]
+          },
+          "docs": "Returns the members of a specific group."
+        },
+        {
+          "info": {
+            "name": "BetterCloud Add Group Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.bettercloud.com/v1/groups/:id/members",
+            "params": [
+              {
+                "name": "id",
+                "value": "group-x1y2z3",
+                "type": "path",
+                "description": "The unique identifier of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a user to a group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
