@@ -17,6 +17,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "bettercloud-events-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "bettercloud-groups-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "bettercloud-integrations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "bettercloud-users-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "bettercloud-workflows-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

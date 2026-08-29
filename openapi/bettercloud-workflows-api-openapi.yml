@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: BetterCloud Platform Events Workflows API
   description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
@@ -235,13 +235,37 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    WorkflowResponse:
-      title: Workflow Response
-      description: Single workflow response.
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/Workflow'
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+    WorkflowRunRequest:
+      title: Workflow Run Request
+      description: Request body for triggering a workflow execution.
+      type: object
+      required:
+      - user_ids
+      properties:
+        user_ids:
+          type: array
+          items:
+            type: string
+          description: List of user IDs to run the workflow for.
+          example:
+          - user-a1b2c3d4
     WorkflowCreateRequest:
       title: Workflow Create Request
       description: Request body for creating a workflow.
@@ -272,20 +296,6 @@ components:
           - active
           - draft
           example: draft
-    WorkflowRunRequest:
-      title: Workflow Run Request
-      description: Request body for triggering a workflow execution.
-      type: object
-      required:
-      - user_ids
-      properties:
-        user_ids:
-          type: array
-          items:
-            type: string
-          description: List of user IDs to run the workflow for.
-          example:
-          - user-a1b2c3d4
     ErrorResponse:
       title: Error Response
       description: Standard error response from BetterCloud API.
@@ -312,66 +322,6 @@ components:
       - id
       - href
       - reason
-    WorkflowListResponse:
-      title: Workflow List Response
-      description: Paginated list of workflows.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Workflow'
-        meta:
-          $ref: '#/components/schemas/MetaResponse'
-    Workflow:
-      title: Workflow
-      description: An automation workflow that can be triggered to execute actions across SaaS applications.
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the workflow.
-          example: wf-100200
-        name:
-          type: string
-          description: Display name of the workflow.
-          example: Employee Offboarding
-        description:
-          type: string
-          nullable: true
-          description: Description of what the workflow does.
-          example: Automated offboarding workflow for departing employees
-        status:
-          type: string
-          description: Current status of the workflow.
-          enum:
-          - active
-          - inactive
-          - draft
-          example: active
-        trigger_type:
-          type: string
-          description: How the workflow is triggered.
-          enum:
-          - manual
-          - event
-          - scheduled
-          example: manual
-        action_count:
-          type: integer
-          description: Number of actions in the workflow.
-          example: 12
-        created_at:
-          type: string
-          format: date-time
-          description: When the workflow was created.
-          example: '2025-03-01T00:00:00Z'
-        updated_at:
-          type: string
-          format: date-time
-          nullable: true
-          description: When the workflow was last updated.
-          example: '2026-04-01T00:00:00Z'
     WorkflowRunResponse:
       title: Workflow Run Response
       description: Response from triggering a workflow execution.
@@ -402,23 +352,75 @@ components:
               format: date-time
               description: When the execution started.
               example: '2026-04-19T10:00:00Z'
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
+    WorkflowListResponse:
+      title: Workflow List Response
+      description: Paginated list of workflows.
       type: object
       properties:
-        page:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
+    WorkflowResponse:
+      title: Workflow Response
+      description: Single workflow response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Workflow'
+    Workflow:
+      title: Workflow
+      description: An automation workflow that can be triggered to execute actions across SaaS applications.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the workflow.
+          example: wf-100200
+        name:
+          type: string
+          description: Display name of the workflow.
+          example: Employee Offboarding
+        description:
+          type:
+          - string
+          - 'null'
+          description: Description of what the workflow does.
+          example: Automated offboarding workflow for departing employees
+        status:
+          type: string
+          description: Current status of the workflow.
+          enum:
+          - active
+          - inactive
+          - draft
+          example: active
+        trigger_type:
+          type: string
+          description: How the workflow is triggered.
+          enum:
+          - manual
+          - event
+          - scheduled
+          example: manual
+        action_count:
           type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
+          description: Number of actions in the workflow.
+          example: 12
+        created_at:
+          type: string
+          format: date-time
+          description: When the workflow was created.
+          example: '2025-03-01T00:00:00Z'
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the workflow was last updated.
+          example: '2026-04-01T00:00:00Z'
   securitySchemes:
     apiKeyAuth:
       type: apiKey

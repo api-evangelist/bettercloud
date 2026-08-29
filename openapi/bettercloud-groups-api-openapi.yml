@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: BetterCloud Platform Events Groups API
   description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
@@ -256,6 +256,98 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+    Group:
+      title: Group
+      description: A group from an integrated directory service.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the group.
+          example: group-x1y2z3
+        name:
+          type: string
+          description: Display name of the group.
+          example: Engineering Team
+        email:
+          type:
+          - string
+          - 'null'
+          format: email
+          description: Email address of the group.
+          example: engineering@example.com
+        description:
+          type:
+          - string
+          - 'null'
+          description: Description of the group.
+          example: Engineering department group
+        member_count:
+          type: integer
+          description: Number of members in the group.
+          example: 45
+        created_at:
+          type: string
+          format: date-time
+          description: When the group was created.
+          example: '2024-06-01T00:00:00Z'
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the group was last updated.
+          example: '2026-03-01T00:00:00Z'
+    GroupMemberResponse:
+      title: Group Member Response
+      description: Single group member response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/GroupMember'
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response from BetterCloud API.
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: RESOURCE_NOT_FOUND
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+          example: err-500123
+        href:
+          type: string
+          description: Link to documentation for this error code.
+          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
+        reason:
+          type: string
+          description: Human-readable explanation of the error.
+          example: The requested resource was not found
+      required:
+      - code
+      - id
+      - href
+      - reason
     GroupCreateRequest:
       title: Group Create Request
       description: Request body for creating a group.
@@ -276,39 +368,6 @@ components:
           type: string
           description: Group description.
           example: New team group
-    GroupMember:
-      title: Group Member
-      description: A member of a group.
-      type: object
-      properties:
-        user_id:
-          type: string
-          description: Unique identifier of the user.
-          example: user-a1b2c3d4
-        email:
-          type: string
-          format: email
-          description: Email of the group member.
-          example: jsmith@example.com
-        name:
-          type: string
-          description: Display name of the member.
-          example: Jane Smith
-        role:
-          type: string
-          description: Role in the group.
-          enum:
-          - owner
-          - manager
-          - member
-          example: member
-    GroupMemberResponse:
-      title: Group Member Response
-      description: Single group member response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/GroupMember'
     GroupMemberAddRequest:
       title: Group Member Add Request
       description: Request body for adding a member to a group.
@@ -337,6 +396,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupMember'
+    GroupMember:
+      title: Group Member
+      description: A member of a group.
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique identifier of the user.
+          example: user-a1b2c3d4
+        email:
+          type: string
+          format: email
+          description: Email of the group member.
+          example: jsmith@example.com
+        name:
+          type: string
+          description: Display name of the member.
+          example: Jane Smith
+        role:
+          type: string
+          description: Role in the group.
+          enum:
+          - owner
+          - manager
+          - member
+          example: member
     GroupListResponse:
       title: Group List Response
       description: Paginated list of groups.
@@ -348,71 +433,6 @@ components:
             $ref: '#/components/schemas/Group'
         meta:
           $ref: '#/components/schemas/MetaResponse'
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response from BetterCloud API.
-      type: object
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: RESOURCE_NOT_FOUND
-        id:
-          type: string
-          description: Unique identifier for this error occurrence.
-          example: err-500123
-        href:
-          type: string
-          description: Link to documentation for this error code.
-          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
-        reason:
-          type: string
-          description: Human-readable explanation of the error.
-          example: The requested resource was not found
-      required:
-      - code
-      - id
-      - href
-      - reason
-    Group:
-      title: Group
-      description: A group from an integrated directory service.
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the group.
-          example: group-x1y2z3
-        name:
-          type: string
-          description: Display name of the group.
-          example: Engineering Team
-        email:
-          type: string
-          format: email
-          nullable: true
-          description: Email address of the group.
-          example: engineering@example.com
-        description:
-          type: string
-          nullable: true
-          description: Description of the group.
-          example: Engineering department group
-        member_count:
-          type: integer
-          description: Number of members in the group.
-          example: 45
-        created_at:
-          type: string
-          format: date-time
-          description: When the group was created.
-          example: '2024-06-01T00:00:00Z'
-        updated_at:
-          type: string
-          format: date-time
-          nullable: true
-          description: When the group was last updated.
-          example: '2026-03-01T00:00:00Z'
     GroupResponse:
       title: Group Response
       description: Single group response.
@@ -420,23 +440,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Group'
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
   securitySchemes:
     apiKeyAuth:
       type: apiKey

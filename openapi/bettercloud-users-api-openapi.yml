@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: BetterCloud Platform Events Users API
   description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
@@ -266,17 +266,30 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UserListResponse:
-      title: User List Response
-      description: Paginated list of users.
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+    UserResponse:
+      title: User Response
+      description: Single user response.
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        meta:
-          $ref: '#/components/schemas/MetaResponse'
+          $ref: '#/components/schemas/User'
     ErrorResponse:
       title: Error Response
       description: Standard error response from BetterCloud API.
@@ -334,24 +347,28 @@ components:
           - deprovisioned
           example: active
         department:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Department or organizational unit.
           example: Engineering
         title:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Job title.
           example: Senior Engineer
         manager_email:
-          type: string
+          type:
+          - string
+          - 'null'
           format: email
-          nullable: true
           description: Email of the user's manager.
           example: manager@example.com
         location:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Office location.
           example: San Francisco
         created_at:
@@ -364,6 +381,17 @@ components:
           format: date-time
           description: When the user record was last updated.
           example: '2026-04-01T08:30:00Z'
+    UserListResponse:
+      title: User List Response
+      description: Paginated list of users.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
     UserUpdateRequest:
       title: User Update Request
       description: Fields to update on a user (all optional).
@@ -389,30 +417,6 @@ components:
           type: string
           description: New office location.
           example: New York
-    UserResponse:
-      title: User Response
-      description: Single user response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/User'
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
   securitySchemes:
     apiKeyAuth:
       type: apiKey

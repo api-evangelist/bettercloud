@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: BetterCloud Platform Events Integrations API
   description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
@@ -51,6 +51,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    IntegrationListResponse:
+      title: Integration List Response
+      description: List of configured SaaS integrations.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
     Integration:
       title: Integration
       description: A connected SaaS application integration in BetterCloud.
@@ -77,20 +86,12 @@ components:
           - error
           example: connected
         connected_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
           description: When the integration was connected.
           example: '2025-01-10T00:00:00Z'
-    IntegrationListResponse:
-      title: Integration List Response
-      description: List of configured SaaS integrations.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Integration'
   securitySchemes:
     apiKeyAuth:
       type: apiKey
