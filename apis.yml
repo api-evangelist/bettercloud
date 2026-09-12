@@ -124,6 +124,8 @@ apis:
   - type: GettingStarted
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
 common:
+- type: Website
+  url: https://www.bettercloud.com/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/bettercloud/overview
 - type: AgenticAccess
