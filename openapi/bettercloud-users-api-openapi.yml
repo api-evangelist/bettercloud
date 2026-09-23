@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BetterCloud Platform Events Users API
+  title: BetterCloud Platform Users API
   description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
   version: v1
   contact:
@@ -266,56 +266,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
-    UserResponse:
-      title: User Response
-      description: Single user response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/User'
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response from BetterCloud API.
-      type: object
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: RESOURCE_NOT_FOUND
-        id:
-          type: string
-          description: Unique identifier for this error occurrence.
-          example: err-500123
-        href:
-          type: string
-          description: Link to documentation for this error code.
-          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
-        reason:
-          type: string
-          description: Human-readable explanation of the error.
-          example: The requested resource was not found
-      required:
-      - code
-      - id
-      - href
-      - reason
     User:
       title: User
       description: A user discovered and managed across BetterCloud integrations.
@@ -381,6 +331,56 @@ components:
           format: date-time
           description: When the user record was last updated.
           example: '2026-04-01T08:30:00Z'
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response from BetterCloud API.
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: RESOURCE_NOT_FOUND
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+          example: err-500123
+        href:
+          type: string
+          description: Link to documentation for this error code.
+          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
+        reason:
+          type: string
+          description: Human-readable explanation of the error.
+          example: The requested resource was not found
+      required:
+      - code
+      - id
+      - href
+      - reason
+    UserResponse:
+      title: User Response
+      description: Single user response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
     UserListResponse:
       title: User List Response
       description: Paginated list of users.

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BetterCloud Platform Events Groups API
+  title: BetterCloud Platform Groups API
   description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
   version: v1
   contact:
@@ -256,23 +256,25 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
+    GroupMemberAddRequest:
+      title: Group Member Add Request
+      description: Request body for adding a member to a group.
       type: object
+      required:
+      - user_id
       properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
+        user_id:
+          type: string
+          description: ID of the user to add to the group.
+          example: user-a1b2c3d4
+        role:
+          type: string
+          description: Role to assign in the group.
+          enum:
+          - owner
+          - manager
+          - member
+          example: member
     Group:
       title: Group
       description: A group from an integrated directory service.
@@ -315,13 +317,6 @@ components:
           format: date-time
           description: When the group was last updated.
           example: '2026-03-01T00:00:00Z'
-    GroupMemberResponse:
-      title: Group Member Response
-      description: Single group member response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/GroupMember'
     ErrorResponse:
       title: Error Response
       description: Standard error response from BetterCloud API.
@@ -348,54 +343,6 @@ components:
       - id
       - href
       - reason
-    GroupCreateRequest:
-      title: Group Create Request
-      description: Request body for creating a group.
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Display name of the group.
-          example: New Team
-        email:
-          type: string
-          format: email
-          description: Email address of the group.
-          example: newteam@example.com
-        description:
-          type: string
-          description: Group description.
-          example: New team group
-    GroupMemberAddRequest:
-      title: Group Member Add Request
-      description: Request body for adding a member to a group.
-      type: object
-      required:
-      - user_id
-      properties:
-        user_id:
-          type: string
-          description: ID of the user to add to the group.
-          example: user-a1b2c3d4
-        role:
-          type: string
-          description: Role to assign in the group.
-          enum:
-          - owner
-          - manager
-          - member
-          example: member
-    GroupMemberListResponse:
-      title: Group Member List Response
-      description: List of group members.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupMember'
     GroupMember:
       title: Group Member
       description: A member of a group.
@@ -422,6 +369,66 @@ components:
           - manager
           - member
           example: member
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+    GroupMemberResponse:
+      title: Group Member Response
+      description: Single group member response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/GroupMember'
+    GroupMemberListResponse:
+      title: Group Member List Response
+      description: List of group members.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+    GroupCreateRequest:
+      title: Group Create Request
+      description: Request body for creating a group.
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Display name of the group.
+          example: New Team
+        email:
+          type: string
+          format: email
+          description: Email address of the group.
+          example: newteam@example.com
+        description:
+          type: string
+          description: Group description.
+          example: New team group
+    GroupResponse:
+      title: Group Response
+      description: Single group response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Group'
     GroupListResponse:
       title: Group List Response
       description: Paginated list of groups.
@@ -433,13 +440,6 @@ components:
             $ref: '#/components/schemas/Group'
         meta:
           $ref: '#/components/schemas/MetaResponse'
-    GroupResponse:
-      title: Group Response
-      description: Single group response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Group'
   securitySchemes:
     apiKeyAuth:
       type: apiKey

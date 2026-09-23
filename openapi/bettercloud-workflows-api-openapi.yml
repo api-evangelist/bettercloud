@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BetterCloud Platform Events Workflows API
+  title: BetterCloud Platform Workflows API
   description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
   version: v1
   contact:
@@ -235,93 +235,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
-    WorkflowRunRequest:
-      title: Workflow Run Request
-      description: Request body for triggering a workflow execution.
-      type: object
-      required:
-      - user_ids
-      properties:
-        user_ids:
-          type: array
-          items:
-            type: string
-          description: List of user IDs to run the workflow for.
-          example:
-          - user-a1b2c3d4
-    WorkflowCreateRequest:
-      title: Workflow Create Request
-      description: Request body for creating a workflow.
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Name of the workflow.
-          example: New Employee Onboarding
-        description:
-          type: string
-          description: Description of the workflow.
-          example: Automated onboarding workflow for new hires
-        trigger_type:
-          type: string
-          description: Trigger type for the workflow.
-          enum:
-          - manual
-          - event
-          - scheduled
-          example: event
-        status:
-          type: string
-          description: Initial status.
-          enum:
-          - active
-          - draft
-          example: draft
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response from BetterCloud API.
-      type: object
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: RESOURCE_NOT_FOUND
-        id:
-          type: string
-          description: Unique identifier for this error occurrence.
-          example: err-500123
-        href:
-          type: string
-          description: Link to documentation for this error code.
-          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
-        reason:
-          type: string
-          description: Human-readable explanation of the error.
-          example: The requested resource was not found
-      required:
-      - code
-      - id
-      - href
-      - reason
     WorkflowRunResponse:
       title: Workflow Run Response
       description: Response from triggering a workflow execution.
@@ -363,13 +276,32 @@ components:
             $ref: '#/components/schemas/Workflow'
         meta:
           $ref: '#/components/schemas/MetaResponse'
-    WorkflowResponse:
-      title: Workflow Response
-      description: Single workflow response.
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response from BetterCloud API.
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/Workflow'
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: RESOURCE_NOT_FOUND
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+          example: err-500123
+        href:
+          type: string
+          description: Link to documentation for this error code.
+          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
+        reason:
+          type: string
+          description: Human-readable explanation of the error.
+          example: The requested resource was not found
+      required:
+      - code
+      - id
+      - href
+      - reason
     Workflow:
       title: Workflow
       description: An automation workflow that can be triggered to execute actions across SaaS applications.
@@ -421,6 +353,74 @@ components:
           format: date-time
           description: When the workflow was last updated.
           example: '2026-04-01T00:00:00Z'
+    WorkflowResponse:
+      title: Workflow Response
+      description: Single workflow response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Workflow'
+    WorkflowRunRequest:
+      title: Workflow Run Request
+      description: Request body for triggering a workflow execution.
+      type: object
+      required:
+      - user_ids
+      properties:
+        user_ids:
+          type: array
+          items:
+            type: string
+          description: List of user IDs to run the workflow for.
+          example:
+          - user-a1b2c3d4
+    WorkflowCreateRequest:
+      title: Workflow Create Request
+      description: Request body for creating a workflow.
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Name of the workflow.
+          example: New Employee Onboarding
+        description:
+          type: string
+          description: Description of the workflow.
+          example: Automated onboarding workflow for new hires
+        trigger_type:
+          type: string
+          description: Trigger type for the workflow.
+          enum:
+          - manual
+          - event
+          - scheduled
+          example: event
+        status:
+          type: string
+          description: Initial status.
+          enum:
+          - active
+          - draft
+          example: draft
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
   securitySchemes:
     apiKeyAuth:
       type: apiKey

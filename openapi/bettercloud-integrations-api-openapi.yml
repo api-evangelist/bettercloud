@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BetterCloud Platform Events Integrations API
+  title: BetterCloud Platform Integrations API
   description: The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies across enterprise SaaS environments. It enables IT and security teams to programmatically manage users, groups, directories, and automation workflows across 100+ integrated SaaS applications.
   version: v1
   contact:

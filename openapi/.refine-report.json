@@ -1,11 +1,7 @@
 {
   "provider": "bettercloud",
   "sources": [
-    "bettercloud-events-api-openapi.yml",
-    "bettercloud-groups-api-openapi.yml",
-    "bettercloud-integrations-api-openapi.yml",
-    "bettercloud-users-api-openapi.yml",
-    "bettercloud-workflows-api-openapi.yml"
+    "_ae-authored/bettercloud-platform-api.yaml"
   ],
   "outputs": [
     "bettercloud-events-api-openapi.yml",
@@ -18,12 +14,15 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "bettercloud-events-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "bettercloud-groups-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "bettercloud-integrations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "bettercloud-users-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "bettercloud-workflows-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "bettercloud-platform-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "bettercloud-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bettercloud-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bettercloud-integrations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bettercloud-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bettercloud-workflows-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
