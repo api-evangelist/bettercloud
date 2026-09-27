@@ -266,6 +266,30 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    UserResponse:
+      title: User Response
+      description: Single user response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
     User:
       title: User
       description: A user discovered and managed across BetterCloud integrations.
@@ -357,30 +381,6 @@ components:
       - id
       - href
       - reason
-    UserResponse:
-      title: User Response
-      description: Single user response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/User'
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
     UserListResponse:
       title: User List Response
       description: Paginated list of users.
