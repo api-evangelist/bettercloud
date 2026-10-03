@@ -256,6 +256,137 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+    GroupMemberAddRequest:
+      title: Group Member Add Request
+      description: Request body for adding a member to a group.
+      type: object
+      required:
+      - user_id
+      properties:
+        user_id:
+          type: string
+          description: ID of the user to add to the group.
+          example: user-a1b2c3d4
+        role:
+          type: string
+          description: Role to assign in the group.
+          enum:
+          - owner
+          - manager
+          - member
+          example: member
+    GroupMember:
+      title: Group Member
+      description: A member of a group.
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique identifier of the user.
+          example: user-a1b2c3d4
+        email:
+          type: string
+          format: email
+          description: Email of the group member.
+          example: jsmith@example.com
+        name:
+          type: string
+          description: Display name of the member.
+          example: Jane Smith
+        role:
+          type: string
+          description: Role in the group.
+          enum:
+          - owner
+          - manager
+          - member
+          example: member
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response from BetterCloud API.
+      type: object
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: RESOURCE_NOT_FOUND
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+          example: err-500123
+        href:
+          type: string
+          description: Link to documentation for this error code.
+          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
+        reason:
+          type: string
+          description: Human-readable explanation of the error.
+          example: The requested resource was not found
+      required:
+      - code
+      - id
+      - href
+      - reason
+    GroupMemberListResponse:
+      title: Group Member List Response
+      description: List of group members.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+    GroupMemberResponse:
+      title: Group Member Response
+      description: Single group member response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/GroupMember'
+    GroupCreateRequest:
+      title: Group Create Request
+      description: Request body for creating a group.
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Display name of the group.
+          example: New Team
+        email:
+          type: string
+          format: email
+          description: Email address of the group.
+          example: newteam@example.com
+        description:
+          type: string
+          description: Group description.
+          example: New team group
+    GroupResponse:
+      title: Group Response
+      description: Single group response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Group'
     Group:
       title: Group
       description: A group from an integrated directory service.
@@ -309,137 +440,6 @@ components:
             $ref: '#/components/schemas/Group'
         meta:
           $ref: '#/components/schemas/MetaResponse'
-    GroupCreateRequest:
-      title: Group Create Request
-      description: Request body for creating a group.
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Display name of the group.
-          example: New Team
-        email:
-          type: string
-          format: email
-          description: Email address of the group.
-          example: newteam@example.com
-        description:
-          type: string
-          description: Group description.
-          example: New team group
-    GroupMemberAddRequest:
-      title: Group Member Add Request
-      description: Request body for adding a member to a group.
-      type: object
-      required:
-      - user_id
-      properties:
-        user_id:
-          type: string
-          description: ID of the user to add to the group.
-          example: user-a1b2c3d4
-        role:
-          type: string
-          description: Role to assign in the group.
-          enum:
-          - owner
-          - manager
-          - member
-          example: member
-    GroupMember:
-      title: Group Member
-      description: A member of a group.
-      type: object
-      properties:
-        user_id:
-          type: string
-          description: Unique identifier of the user.
-          example: user-a1b2c3d4
-        email:
-          type: string
-          format: email
-          description: Email of the group member.
-          example: jsmith@example.com
-        name:
-          type: string
-          description: Display name of the member.
-          example: Jane Smith
-        role:
-          type: string
-          description: Role in the group.
-          enum:
-          - owner
-          - manager
-          - member
-          example: member
-    GroupMemberListResponse:
-      title: Group Member List Response
-      description: List of group members.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupMember'
-    GroupMemberResponse:
-      title: Group Member Response
-      description: Single group member response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/GroupMember'
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response from BetterCloud API.
-      type: object
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: RESOURCE_NOT_FOUND
-        id:
-          type: string
-          description: Unique identifier for this error occurrence.
-          example: err-500123
-        href:
-          type: string
-          description: Link to documentation for this error code.
-          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
-        reason:
-          type: string
-          description: Human-readable explanation of the error.
-          example: The requested resource was not found
-      required:
-      - code
-      - id
-      - href
-      - reason
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
-    GroupResponse:
-      title: Group Response
-      description: Single group response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Group'
   securitySchemes:
     apiKeyAuth:
       type: apiKey

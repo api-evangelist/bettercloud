@@ -89,34 +89,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
-    EventListResponse:
-      title: Event List Response
-      description: Paginated list of audit events.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-        meta:
-          $ref: '#/components/schemas/MetaResponse'
     Event:
       title: Event
       description: An audit event recording activity in BetterCloud or connected SaaS applications.
@@ -153,6 +125,34 @@ components:
           format: date-time
           description: When the event occurred.
           example: '2026-04-18T14:00:00Z'
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
+    EventListResponse:
+      title: Event List Response
+      description: Paginated list of audit events.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
   securitySchemes:
     apiKeyAuth:
       type: apiKey
