@@ -235,23 +235,98 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MetaResponse:
-      title: Meta Response
-      description: Pagination metadata for list responses.
+    WorkflowRunRequest:
+      title: Workflow Run Request
+      description: Request body for triggering a workflow execution.
+      type: object
+      required:
+      - user_ids
+      properties:
+        user_ids:
+          type: array
+          items:
+            type: string
+          description: List of user IDs to run the workflow for.
+          example:
+          - user-a1b2c3d4
+    WorkflowListResponse:
+      title: Workflow List Response
+      description: Paginated list of workflows.
       type: object
       properties:
-        page:
-          type: integer
-          description: Current page number.
-          example: 1
-        per_page:
-          type: integer
-          description: Number of items per page.
-          example: 25
-        total:
-          type: integer
-          description: Total number of items.
-          example: 150
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
+    WorkflowRunResponse:
+      title: Workflow Run Response
+      description: Response from triggering a workflow execution.
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            execution_id:
+              type: string
+              description: Unique ID of this workflow execution.
+              example: exec-900100
+            workflow_id:
+              type: string
+              description: ID of the workflow being executed.
+              example: wf-100200
+            status:
+              type: string
+              description: Current execution status.
+              enum:
+              - pending
+              - running
+              - completed
+              - failed
+              example: running
+            started_at:
+              type: string
+              format: date-time
+              description: When the execution started.
+              example: '2026-04-19T10:00:00Z'
+    WorkflowResponse:
+      title: Workflow Response
+      description: Single workflow response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Workflow'
+    WorkflowCreateRequest:
+      title: Workflow Create Request
+      description: Request body for creating a workflow.
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Name of the workflow.
+          example: New Employee Onboarding
+        description:
+          type: string
+          description: Description of the workflow.
+          example: Automated onboarding workflow for new hires
+        trigger_type:
+          type: string
+          description: Trigger type for the workflow.
+          enum:
+          - manual
+          - event
+          - scheduled
+          example: event
+        status:
+          type: string
+          description: Initial status.
+          enum:
+          - active
+          - draft
+          example: draft
     ErrorResponse:
       title: Error Response
       description: Standard error response from BetterCloud API.
@@ -278,20 +353,23 @@ components:
       - id
       - href
       - reason
-    WorkflowRunRequest:
-      title: Workflow Run Request
-      description: Request body for triggering a workflow execution.
+    MetaResponse:
+      title: Meta Response
+      description: Pagination metadata for list responses.
       type: object
-      required:
-      - user_ids
       properties:
-        user_ids:
-          type: array
-          items:
-            type: string
-          description: List of user IDs to run the workflow for.
-          example:
-          - user-a1b2c3d4
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+        per_page:
+          type: integer
+          description: Number of items per page.
+          example: 25
+        total:
+          type: integer
+          description: Total number of items.
+          example: 150
     Workflow:
       title: Workflow
       description: An automation workflow that can be triggered to execute actions across SaaS applications.
@@ -343,84 +421,6 @@ components:
           format: date-time
           description: When the workflow was last updated.
           example: '2026-04-01T00:00:00Z'
-    WorkflowRunResponse:
-      title: Workflow Run Response
-      description: Response from triggering a workflow execution.
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            execution_id:
-              type: string
-              description: Unique ID of this workflow execution.
-              example: exec-900100
-            workflow_id:
-              type: string
-              description: ID of the workflow being executed.
-              example: wf-100200
-            status:
-              type: string
-              description: Current execution status.
-              enum:
-              - pending
-              - running
-              - completed
-              - failed
-              example: running
-            started_at:
-              type: string
-              format: date-time
-              description: When the execution started.
-              example: '2026-04-19T10:00:00Z'
-    WorkflowListResponse:
-      title: Workflow List Response
-      description: Paginated list of workflows.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Workflow'
-        meta:
-          $ref: '#/components/schemas/MetaResponse'
-    WorkflowResponse:
-      title: Workflow Response
-      description: Single workflow response.
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Workflow'
-    WorkflowCreateRequest:
-      title: Workflow Create Request
-      description: Request body for creating a workflow.
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Name of the workflow.
-          example: New Employee Onboarding
-        description:
-          type: string
-          description: Description of the workflow.
-          example: Automated onboarding workflow for new hires
-        trigger_type:
-          type: string
-          description: Trigger type for the workflow.
-          enum:
-          - manual
-          - event
-          - scheduled
-          example: event
-        status:
-          type: string
-          description: Initial status.
-          enum:
-          - active
-          - draft
-          example: draft
   securitySchemes:
     apiKeyAuth:
       type: apiKey
