@@ -124,6 +124,12 @@ apis:
   - type: GettingStarted
     url: https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451
 common:
+- type: Plans
+  url: plans/bettercloud-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/bettercloud-rate-limits.yml
+- type: FinOps
+  url: finops/bettercloud-finops.yml
 - type: Website
   url: https://www.bettercloud.com/
 - type: PostmanWorkspace
