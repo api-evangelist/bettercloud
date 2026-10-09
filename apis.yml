@@ -210,6 +210,8 @@ common:
     description: Trigger BetterCloud workflows from ServiceNow ITSM tickets.
   - name: Jira
     description: Integrate SaaS management actions with Jira issue workflows.
+- type: SpectralRules
+  url: https://github.com/BetterCloud/bettercloud-openapi-rules/blob/1fa6df2beb0230a5f63ef7bcf2fc9b35eee0d633/.spectral.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

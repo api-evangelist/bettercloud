@@ -1,0 +1,32 @@
+# harvested from https://github.com/BetterCloud/bettercloud-openapi-rules/blob/1fa6df2beb0230a5f63ef7bcf2fc9b35eee0d633/.spectral.yml on 2026-10-09 — a Spectral ruleset published in the provider's own GitHub repository (BetterCloud/bettercloud-openapi-rules); found by GitHub code search, fetched verbatim
+x-method: harvested
+x-stamped: 2026-10-09
+x-source-url: https://github.com/BetterCloud/bettercloud-openapi-rules/blob/1fa6df2beb0230a5f63ef7bcf2fc9b35eee0d633/.spectral.yml
+extends:
+  - spectral:oas
+  - https://unpkg.com/@stoplight/spectral-owasp-ruleset@1.4.0/dist/ruleset.js
+  - https://raw.githubusercontent.com/BetterCloud/spectral-redos-detector-ruleset/main/dist/ruleset.js
+  - ./spectral/ruleset.yml
+
+functionsDir: ./spectral/functions
+
+functions:
+  - ensurePropertiesExample
+  - ensureAllArraysHaveItemTypes
+  - ensureSnakeCaseWithDigits
+  - validateOperationIdNaming
+  - ensureCommonHttpMethods
+  - ensure4xxAnd5xxUseErrorBody
+  - ensureISOFormat
+  - ensureCommonHttpCodes
+  - ensureMeaningfulParameterNames
+  - ensureParametersUseRef
+  - ensureWrappedResponses
+rules:
+  contact-properties: off
+  operation-singular-tag: off
+  owasp:api2:2019-jwt-best-practices: off # Cannot read `type` of null, seems to not handle securityScheme $ref
+  owasp:api4:2019-string-restricted: warn
+  owasp:api4:2019-rate-limit-retry-after: warn # don't break the build until we have adopted the real rate limiter
+  owasp:api4:2019-string-limit: warn # don't break the build but warn so that best judgement can be used
+  owasp:api2:2019-no-credentials-in-url: warn # its picking up pageToken as a credential
