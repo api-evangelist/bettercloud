@@ -51,15 +51,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    IntegrationListResponse:
-      title: Integration List Response
-      description: List of configured SaaS integrations.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Integration'
     Integration:
       title: Integration
       description: A connected SaaS application integration in BetterCloud.
@@ -92,6 +83,15 @@ components:
           format: date-time
           description: When the integration was connected.
           example: '2025-01-10T00:00:00Z'
+    IntegrationListResponse:
+      title: Integration List Response
+      description: List of configured SaaS integrations.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
   securitySchemes:
     apiKeyAuth:
       type: apiKey

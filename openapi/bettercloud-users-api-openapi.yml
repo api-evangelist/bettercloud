@@ -266,17 +266,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UserListResponse:
-      title: User List Response
-      description: Paginated list of users.
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        meta:
-          $ref: '#/components/schemas/MetaResponse'
     User:
       title: User
       description: A user discovered and managed across BetterCloud integrations.
@@ -342,32 +331,24 @@ components:
           format: date-time
           description: When the user record was last updated.
           example: '2026-04-01T08:30:00Z'
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response from BetterCloud API.
+    UserListResponse:
+      title: User List Response
+      description: Paginated list of users.
       type: object
       properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: RESOURCE_NOT_FOUND
-        id:
-          type: string
-          description: Unique identifier for this error occurrence.
-          example: err-500123
-        href:
-          type: string
-          description: Link to documentation for this error code.
-          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
-        reason:
-          type: string
-          description: Human-readable explanation of the error.
-          example: The requested resource was not found
-      required:
-      - code
-      - id
-      - href
-      - reason
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        meta:
+          $ref: '#/components/schemas/MetaResponse'
+    UserResponse:
+      title: User Response
+      description: Single user response.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
     MetaResponse:
       title: Meta Response
       description: Pagination metadata for list responses.
@@ -410,13 +391,32 @@ components:
           type: string
           description: New office location.
           example: New York
-    UserResponse:
-      title: User Response
-      description: Single user response.
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response from BetterCloud API.
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/User'
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: RESOURCE_NOT_FOUND
+        id:
+          type: string
+          description: Unique identifier for this error occurrence.
+          example: err-500123
+        href:
+          type: string
+          description: Link to documentation for this error code.
+          example: https://developer.bettercloud.com/errors/RESOURCE_NOT_FOUND
+        reason:
+          type: string
+          description: Human-readable explanation of the error.
+          example: The requested resource was not found
+      required:
+      - code
+      - id
+      - href
+      - reason
   securitySchemes:
     apiKeyAuth:
       type: apiKey
