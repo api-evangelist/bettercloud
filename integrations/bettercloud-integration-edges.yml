@@ -80,6 +80,23 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
+- partner_name: Miro (own)
+  partner: miro
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://miro.com/marketplace/bettercloud/
+  mirror_of: miro/integrations/miro-integration-edges.yml
+  apps:
+  - BetterCloud
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Miro app
 generated: '2026-10-18'
 method: searched
 source:
@@ -92,3 +109,4 @@ checked:
 - https://eucoc.cloud/en/public-register/list-of-adherent-services
 - slack/integrations/slack-integration-edges.yml
 - zoom/integrations/zoom-integration-edges.yml
+- miro/integrations/miro-integration-edges.yml
