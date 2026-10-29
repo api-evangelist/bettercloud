@@ -1,4 +1,4 @@
-# BetterCloud (bettercloud)
+# BetterCloud
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,141 +66,234 @@
 
 BetterCloud is the end-to-end SaaS management platform that enables IT teams to discover, manage, and secure the growing SaaS environment. The platform provides automated workflows, security policies, and management capabilities for SaaS applications in enterprise environments, handling billions of API calls per day across 100+ SaaS application integrations.
 
-**URL:** [https://developer.bettercloud.com/](https://developer.bettercloud.com/)
+**Areas:** Automation · Compliance · Enterprise · IT Operations · SaaS Management · Security · Workflows · User Lifecycle
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## BetterCloud on APIs.io
 
-## Tags:
+Everything profiled for BetterCloud is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bettercloud/](https://apis.io/providers/bettercloud/)** — or go straight to one of the APIs or properties below.
 
- - Automation, Compliance, Enterprise, IT Operations, SaaS Management, Security, Workflows, User Lifecycle
+### APIs (5)
 
-## Timestamps
+- [BetterCloud Events API](https://apis.io/apis/bettercloud/bettercloud-events-api/) — Query audit events and activity logs
+- [BetterCloud Groups API](https://apis.io/apis/bettercloud/bettercloud-groups-api/) — Manage groups and group memberships
+- [BetterCloud Integrations API](https://apis.io/apis/bettercloud/bettercloud-integrations-api/) — Manage SaaS application integrations and connections
+- [BetterCloud Users API](https://apis.io/apis/bettercloud/bettercloud-users-api/) — Manage users across integrated SaaS applications
+- [BetterCloud Workflows API](https://apis.io/apis/bettercloud/bettercloud-workflows-api/) — Manage automation workflows and triggers
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### BetterCloud Platform API
-The BetterCloud Platform API provides REST API access for managing SaaS application operations, automated workflows, user lifecycle management, and security policies. It enables IT and security teams to programmatically automate management workflows and enforce security policies across cloud technology stacks.
+#### Agentic access (1)
 
-**Human URL:** [https://developer.bettercloud.com/](https://developer.bettercloud.com/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Bettercloud Agentic Access](https://apis.io/agentic-access/bettercloud/bettercloud-agentic-access/)
 
- - Automation, REST API, SaaS Management, Security, User Lifecycle, Workflows
+#### JSON Schema (23)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://developer.bettercloud.com/)
-- [GettingStarted](https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451)
-- [OpenAPI](openapi/bettercloud-platform-api.yaml)
+- [Event](https://apis.io/schemas/bettercloud/bettercloud-event/)
+- [EventListResponse](https://apis.io/schemas/bettercloud/bettercloud-event-list-response/)
+- [Group](https://apis.io/schemas/bettercloud/bettercloud-group/)
+- [GroupCreateRequest](https://apis.io/schemas/bettercloud/bettercloud-group-create-request/)
+- [GroupListResponse](https://apis.io/schemas/bettercloud/bettercloud-group-list-response/)
+- [GroupMember](https://apis.io/schemas/bettercloud/bettercloud-group-member/)
+- [GroupMemberAddRequest](https://apis.io/schemas/bettercloud/bettercloud-group-member-add-request/)
+- [GroupMemberListResponse](https://apis.io/schemas/bettercloud/bettercloud-group-member-list-response/)
+- [GroupMemberResponse](https://apis.io/schemas/bettercloud/bettercloud-group-member-response/)
+- [GroupResponse](https://apis.io/schemas/bettercloud/bettercloud-group-response/)
+- [Integration](https://apis.io/schemas/bettercloud/bettercloud-integration/)
+- [IntegrationListResponse](https://apis.io/schemas/bettercloud/bettercloud-integration-list-response/)
+- [MetaResponse](https://apis.io/schemas/bettercloud/bettercloud-meta-response/)
+- [User](https://apis.io/schemas/bettercloud/bettercloud-user/)
+- [UserListResponse](https://apis.io/schemas/bettercloud/bettercloud-user-list-response/)
+- [UserResponse](https://apis.io/schemas/bettercloud/bettercloud-user-response/)
+- [UserUpdateRequest](https://apis.io/schemas/bettercloud/bettercloud-user-update-request/)
+- [Workflow](https://apis.io/schemas/bettercloud/bettercloud-workflow/)
+- [WorkflowCreateRequest](https://apis.io/schemas/bettercloud/bettercloud-workflow-create-request/)
+- [WorkflowListResponse](https://apis.io/schemas/bettercloud/bettercloud-workflow-list-response/)
+- [WorkflowResponse](https://apis.io/schemas/bettercloud/bettercloud-workflow-response/)
+- [WorkflowRunRequest](https://apis.io/schemas/bettercloud/bettercloud-workflow-run-request/)
+- [WorkflowRunResponse](https://apis.io/schemas/bettercloud/bettercloud-workflow-run-response/)
 
-## Common Properties
+#### JSON Structure (23)
 
-- [Portal](https://developer.bettercloud.com/)
-- [GettingStarted](https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451)
+Data models expressed in JSON Structure.
+
+- [Bettercloud Event List Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-event-list-response-structure/)
+- [Bettercloud Event Structure](https://apis.io/json-structure/bettercloud/bettercloud-event-structure/)
+- [Bettercloud Group Create Request Structure](https://apis.io/json-structure/bettercloud/bettercloud-group-create-request-structure/)
+- [Bettercloud Group List Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-group-list-response-structure/)
+- [Bettercloud Group Member Add Request Structure](https://apis.io/json-structure/bettercloud/bettercloud-group-member-add-request-structure/)
+- [Bettercloud Group Member List Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-group-member-list-response-structure/)
+- [Bettercloud Group Member Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-group-member-response-structure/)
+- [Bettercloud Group Member Structure](https://apis.io/json-structure/bettercloud/bettercloud-group-member-structure/)
+- [Bettercloud Group Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-group-response-structure/)
+- [Bettercloud Group Structure](https://apis.io/json-structure/bettercloud/bettercloud-group-structure/)
+- [Bettercloud Integration List Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-integration-list-response-structure/)
+- [Bettercloud Integration Structure](https://apis.io/json-structure/bettercloud/bettercloud-integration-structure/)
+- [Bettercloud Meta Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-meta-response-structure/)
+- [Bettercloud User List Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-user-list-response-structure/)
+- [Bettercloud User Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-user-response-structure/)
+- [Bettercloud User Structure](https://apis.io/json-structure/bettercloud/bettercloud-user-structure/)
+- [Bettercloud User Update Request Structure](https://apis.io/json-structure/bettercloud/bettercloud-user-update-request-structure/)
+- [Bettercloud Workflow Create Request Structure](https://apis.io/json-structure/bettercloud/bettercloud-workflow-create-request-structure/)
+- [Bettercloud Workflow List Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-workflow-list-response-structure/)
+- [Bettercloud Workflow Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-workflow-response-structure/)
+- [Bettercloud Workflow Run Request Structure](https://apis.io/json-structure/bettercloud/bettercloud-workflow-run-request-structure/)
+- [Bettercloud Workflow Run Response Structure](https://apis.io/json-structure/bettercloud/bettercloud-workflow-run-response-structure/)
+- [Bettercloud Workflow Structure](https://apis.io/json-structure/bettercloud/bettercloud-workflow-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Bettercloud Context](https://apis.io/jsonld/bettercloud/bettercloud-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Bettercloud Vocabulary](https://apis.io/vocabularies/bettercloud/bettercloud-vocabulary/)
+
+#### Examples (23)
+
+Example requests and responses.
+
+- [Bettercloud Event Example](https://apis.io/examples/bettercloud/bettercloud-event-example/)
+- [Bettercloud Event List Response Example](https://apis.io/examples/bettercloud/bettercloud-event-list-response-example/)
+- [Bettercloud Group Create Request Example](https://apis.io/examples/bettercloud/bettercloud-group-create-request-example/)
+- [Bettercloud Group Example](https://apis.io/examples/bettercloud/bettercloud-group-example/)
+- [Bettercloud Group List Response Example](https://apis.io/examples/bettercloud/bettercloud-group-list-response-example/)
+- [Bettercloud Group Member Add Request Example](https://apis.io/examples/bettercloud/bettercloud-group-member-add-request-example/)
+- [Bettercloud Group Member Example](https://apis.io/examples/bettercloud/bettercloud-group-member-example/)
+- [Bettercloud Group Member List Response Example](https://apis.io/examples/bettercloud/bettercloud-group-member-list-response-example/)
+- [Bettercloud Group Member Response Example](https://apis.io/examples/bettercloud/bettercloud-group-member-response-example/)
+- [Bettercloud Group Response Example](https://apis.io/examples/bettercloud/bettercloud-group-response-example/)
+- [Bettercloud Integration Example](https://apis.io/examples/bettercloud/bettercloud-integration-example/)
+- [Bettercloud Integration List Response Example](https://apis.io/examples/bettercloud/bettercloud-integration-list-response-example/)
+- [Bettercloud Meta Response Example](https://apis.io/examples/bettercloud/bettercloud-meta-response-example/)
+- [Bettercloud User Example](https://apis.io/examples/bettercloud/bettercloud-user-example/)
+- [Bettercloud User List Response Example](https://apis.io/examples/bettercloud/bettercloud-user-list-response-example/)
+- [Bettercloud User Response Example](https://apis.io/examples/bettercloud/bettercloud-user-response-example/)
+- [Bettercloud User Update Request Example](https://apis.io/examples/bettercloud/bettercloud-user-update-request-example/)
+- [Bettercloud Workflow Create Request Example](https://apis.io/examples/bettercloud/bettercloud-workflow-create-request-example/)
+- [Bettercloud Workflow Example](https://apis.io/examples/bettercloud/bettercloud-workflow-example/)
+- [Bettercloud Workflow List Response Example](https://apis.io/examples/bettercloud/bettercloud-workflow-list-response-example/)
+- [Bettercloud Workflow Response Example](https://apis.io/examples/bettercloud/bettercloud-workflow-response-example/)
+- [Bettercloud Workflow Run Request Example](https://apis.io/examples/bettercloud/bettercloud-workflow-run-request-example/)
+- [Bettercloud Workflow Run Response Example](https://apis.io/examples/bettercloud/bettercloud-workflow-run-response-example/)
+
+#### Collections (10)
+
+Postman and Open Collection request collections.
+
+- [BetterCloud Platform Events API](https://apis.io/collections/bettercloud/open-bettercloud-events-api/)
+- [BetterCloud Platform Events Groups API](https://apis.io/collections/bettercloud/open-bettercloud-groups-api/)
+- [BetterCloud Platform Events Integrations API](https://apis.io/collections/bettercloud/open-bettercloud-integrations-api/)
+- [BetterCloud Platform Events Users API](https://apis.io/collections/bettercloud/open-bettercloud-users-api/)
+- [BetterCloud Platform Events Workflows API](https://apis.io/collections/bettercloud/open-bettercloud-workflows-api/)
+- [BetterCloud Platform Events API](https://apis.io/collections/bettercloud/postman-bettercloud-events-api/)
+- [BetterCloud Platform Events Groups API](https://apis.io/collections/bettercloud/postman-bettercloud-groups-api/)
+- [BetterCloud Platform Events Integrations API](https://apis.io/collections/bettercloud/postman-bettercloud-integrations-api/)
+- [BetterCloud Platform Events Users API](https://apis.io/collections/bettercloud/postman-bettercloud-users-api/)
+- [BetterCloud Platform Events Workflows API](https://apis.io/collections/bettercloud/postman-bettercloud-workflows-api/)
+
+#### Governance rules (3)
+
+Spectral rulesets for the provider's contracts.
+
+- [BetterCloud — bettercloud openapi rules rules](https://apis.io/rules/bettercloud/bettercloud-bettercloud-openapi-rules-spectral-rules/)
+- [BetterCloud — jsonschema rules](https://apis.io/rules/bettercloud/bettercloud-jsonschema-spectral-rules/)
+- [BetterCloud API Rules](https://apis.io/rules/bettercloud/bettercloud-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Bettercloud Authentication](https://apis.io/security/bettercloud/bettercloud-authentication/)
+- [Bettercloud Domain Security](https://apis.io/security/bettercloud/bettercloud-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Bettercloud Plans Pricing](https://apis.io/plans/bettercloud/bettercloud-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Bettercloud Rate Limits](https://apis.io/rate-limits/bettercloud/bettercloud-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Bettercloud Finops](https://apis.io/finops/bettercloud/bettercloud-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.bettercloud.com/)
+- [Getting started](https://support.bettercloud.com/s/article/BCCINT4000--BetterCloud-API-Overview-bc33451)
 - [Pricing](https://www.bettercloud.com/pricing/)
-- [Blog](https://www.bettercloud.com/monitor/)
 - [Support](https://support.bettercloud.com/s/)
-- [Login](https://support.bettercloud.com/s/login/)
-- [SignUp](https://www.bettercloud.com/monitor/sign-up/)
-- [GitHubOrganization](https://github.com/BetterCloud)
+- [Blog](https://www.bettercloud.com/monitor/)
+- [GitHub](https://github.com/BetterCloud)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| User Lifecycle Management | Automate user onboarding and offboarding workflows across all connected SaaS applications. |
-| SaaS Discovery | Automatically discover all SaaS applications in use across the organization. |
-| Automated Workflows | Build no-code automation workflows triggered by events, schedules, or manual action. |
-| Security Policy Enforcement | Create and enforce security policies that monitor and remediate violations across SaaS apps. |
-| Group Management | Manage groups and memberships across Google Workspace, Azure AD, and other directory services. |
-| Audit Logging | Comprehensive audit trail of all actions taken by users and automated workflows. |
-| SaaS Integrations | Connect and manage 100+ enterprise SaaS applications including Google Workspace, Slack, Salesforce, and more. |
-| License Management | Track and optimize SaaS licenses to reduce spend and identify unused seats. |
+**Kin Score 29.7** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 22.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 39.3 |
+| Access clarity | 25.0 |
 
-| Name | Description |
-|------|-------------|
-| Employee Offboarding | Automatically revoke access and deprovision users across all SaaS applications when an employee leaves. |
-| Employee Onboarding | Automatically provision new employees with appropriate SaaS access based on role and department. |
-| SaaS Spend Optimization | Identify underutilized licenses and redundant applications to reduce SaaS spend. |
-| Security Incident Response | Immediately suspend and deprovision compromised accounts across all SaaS platforms. |
-| Compliance Auditing | Generate audit reports showing who has access to what across all connected SaaS applications. |
-| Access Reviews | Periodically review and certify user access to ensure least-privilege principles. |
+**Agent readiness 28.7** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Google Workspace | Manage Google Workspace users, groups, Drive files, and calendar access. |
-| Slack | Manage Slack workspace users, channels, and app connections. |
-| Salesforce | Manage Salesforce user provisioning and deprovisioning. |
-| Microsoft 365 | Manage Microsoft 365 users, licenses, and Azure AD groups. |
-| Okta | Connect BetterCloud workflows with Okta identity management. |
-| ServiceNow | Trigger BetterCloud workflows from ServiceNow ITSM tickets. |
-| Jira | Integrate SaaS management actions with Jira issue workflows. |
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bettercloud/](https://apis.io/providers/bettercloud/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [BetterCloud Platform API](openapi/bettercloud-platform-api.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BetterCloud: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [bettercloud-event-schema.json](json-schema/bettercloud-event-schema.json)
-- [bettercloud-event-list-response-schema.json](json-schema/bettercloud-event-list-response-schema.json)
-- [bettercloud-group-schema.json](json-schema/bettercloud-group-schema.json)
-- [bettercloud-group-create-request-schema.json](json-schema/bettercloud-group-create-request-schema.json)
-- [bettercloud-group-list-response-schema.json](json-schema/bettercloud-group-list-response-schema.json)
-- [bettercloud-group-member-schema.json](json-schema/bettercloud-group-member-schema.json)
-- [bettercloud-group-member-add-request-schema.json](json-schema/bettercloud-group-member-add-request-schema.json)
-- [bettercloud-group-member-list-response-schema.json](json-schema/bettercloud-group-member-list-response-schema.json)
-- [bettercloud-group-member-response-schema.json](json-schema/bettercloud-group-member-response-schema.json)
-- [bettercloud-group-response-schema.json](json-schema/bettercloud-group-response-schema.json)
-- [bettercloud-integration-schema.json](json-schema/bettercloud-integration-schema.json)
-- [bettercloud-integration-list-response-schema.json](json-schema/bettercloud-integration-list-response-schema.json)
-- [bettercloud-meta-response-schema.json](json-schema/bettercloud-meta-response-schema.json)
-- [bettercloud-user-schema.json](json-schema/bettercloud-user-schema.json)
-- [bettercloud-user-list-response-schema.json](json-schema/bettercloud-user-list-response-schema.json)
-- [bettercloud-user-response-schema.json](json-schema/bettercloud-user-response-schema.json)
-- [bettercloud-user-update-request-schema.json](json-schema/bettercloud-user-update-request-schema.json)
-- [bettercloud-workflow-schema.json](json-schema/bettercloud-workflow-schema.json)
-- [bettercloud-workflow-create-request-schema.json](json-schema/bettercloud-workflow-create-request-schema.json)
-- [bettercloud-workflow-list-response-schema.json](json-schema/bettercloud-workflow-list-response-schema.json)
-- [bettercloud-workflow-response-schema.json](json-schema/bettercloud-workflow-response-schema.json)
-- [bettercloud-workflow-run-request-schema.json](json-schema/bettercloud-workflow-run-request-schema.json)
-- [bettercloud-workflow-run-response-schema.json](json-schema/bettercloud-workflow-run-response-schema.json)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [BetterCloud Platform API](capabilities/shared/bettercloud.yaml) — 19 operations for user lifecycle management, group management, workflows, events, and integrations
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [SaaS Lifecycle Management](capabilities/saas-lifecycle-management.yaml) | BetterCloud | 11 | IT Administrator, Security Engineer |
-
-## Vocabulary
-
-- [BetterCloud Vocabulary](vocabulary/bettercloud-vocabulary.yaml) — Unified taxonomy mapping 5 resources, 8 actions, 1 workflow, and 2 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [BetterCloud Spectral Rules](rules/bettercloud-spectral-rules.yml) — 28 rules across 10 categories enforcing BetterCloud API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bettercloud/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
